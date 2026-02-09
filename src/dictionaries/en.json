@@ -1,0 +1,98 @@
+{
+  "metadata": {
+    "title": "NINE20 | Eastern Philosophy × AI",
+    "description": "Your Destiny, Decoded by Data & AI."
+  },
+  "nav": {
+    "products": "Products",
+    "techBlog": "Tech Blog",
+    "about": "About",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "AI Fortune Platform",
+    "title": "Your Destiny,",
+    "titleHighlight": "Decoded by",
+    "titleEnd": "Data & AI.",
+    "description": "Thousands of years of Eastern philosophical wisdom meets hyper-scale AI, delivering destiny analysis crafted exclusively for you.",
+    "cta": "Try for Free",
+    "ctaSecondary": "Learn More"
+  },
+  "features": {
+    "badge": "AI Dosa Personas",
+    "title": "Four AI Masters Read Your Destiny",
+    "description": "Each AI Dosa brings a unique personality and expertise, analyzing your Saju from diverse perspectives.",
+    "cards": {
+      "muDosa": {
+        "name": "Mu-Dosa",
+        "persona": "Traditional Saju Master",
+        "description": "The essence of classical Myeongri studies, reimagined with AI. Delivers precise and profound Saju readings."
+      },
+      "claudeDosa": {
+        "name": "Claude-Dosa",
+        "persona": "Logical Analyst",
+        "description": "Data-driven logical analysis that systematically interprets your four pillars of destiny."
+      },
+      "gDosa": {
+        "name": "G-Dosa",
+        "persona": "Trendy Counselor",
+        "description": "Fun, approachable fortune-telling with a modern Gen-Z sensibility."
+      },
+      "gemDosa": {
+        "name": "Gem-Dosa",
+        "persona": "Spiritual Guide",
+        "description": "Cross-cultural philosophical insights that illuminate your life's direction."
+      }
+    }
+  },
+  "techHighlights": {
+    "badge": "Technology",
+    "title": "Global Standard Tech Architecture",
+    "description": "Complex Eastern metaphysics, perfectly implemented with modern technology.",
+    "items": {
+      "calendar": {
+        "title": "Manseryeok Engine",
+        "description": "Processes thousands of years of lunar calendar data and solar term calculations in milliseconds."
+      },
+      "timezone": {
+        "title": "Global Timezone",
+        "description": "Guarantees accurate birth time conversion and Saju calculation from anywhere in the world."
+      },
+      "ai": {
+        "title": "Multi-AI Engine",
+        "description": "Hybrid AI architecture leveraging GPT, Claude, Gemini, and more."
+      },
+      "personalization": {
+        "title": "Hyper-Personalized",
+        "description": "Precision analysis based on your birth date and time for tailored destiny insights."
+      }
+    }
+  },
+  "techStack": {
+    "badge": "Tech Stack",
+    "title": "Powered by NINE20",
+    "items": {
+      "flutter": { "name": "Flutter", "role": "Cross-platform App" },
+      "fastapi": { "name": "FastAPI", "role": "High-performance API" },
+      "python": { "name": "Python", "role": "AI/ML Engine" },
+      "nextjs": { "name": "Next.js", "role": "Web Frontend" },
+      "refine": { "name": "Refine", "role": "Admin Dashboard" },
+      "postgres": { "name": "PostgreSQL", "role": "Database" }
+    }
+  },
+  "footer": {
+    "description": "Eastern Philosophy meets Hyper-scale AI. Your destiny, decoded by data.",
+    "product": "Product",
+    "sajuApp": "NINE20 Saju App",
+    "aiDosa": "AI Dosa",
+    "pricing": "Pricing",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "techBlog": "Tech Blog",
+    "careers": "Careers",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2025 NINE20. All rights reserved."
+  }
+}
