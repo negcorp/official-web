@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Brain, Zap, Heart } from "lucide-react";
+import { Sparkles, Cpu, Layers, Rocket } from "lucide-react";
 import type { Dictionary } from "@/lib/getDictionary";
 
-const dosaPalettes = [
+const productPalettes = [
   {
-    key: "muDosa" as const,
+    key: "saju920" as const,
     icon: Sparkles,
     gradient: "from-purple-500 to-indigo-600",
     glow: "shadow-purple-500/20",
@@ -14,24 +14,24 @@ const dosaPalettes = [
     border: "border-purple-500/20",
   },
   {
-    key: "claudeDosa" as const,
-    icon: Brain,
+    key: "multiAI" as const,
+    icon: Cpu,
     gradient: "from-blue-500 to-cyan-500",
     glow: "shadow-blue-500/20",
     bg: "bg-blue-500/10",
     border: "border-blue-500/20",
   },
   {
-    key: "gDosa" as const,
-    icon: Zap,
+    key: "easyContext" as const,
+    icon: Layers,
     gradient: "from-green-400 to-emerald-500",
     glow: "shadow-green-500/20",
     bg: "bg-green-500/10",
     border: "border-green-500/20",
   },
   {
-    key: "gemDosa" as const,
-    icon: Heart,
+    key: "comingSoon" as const,
+    icon: Rocket,
     gradient: "from-rose-400 to-pink-500",
     glow: "shadow-rose-500/20",
     bg: "bg-rose-500/10",
@@ -87,19 +87,19 @@ export default function Features({ dict }: { dict: Dictionary }) {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {dosaPalettes.map((dosa) => {
-            const card = dict.features.cards[dosa.key];
-            const Icon = dosa.icon;
+          {productPalettes.map((product) => {
+            const card = dict.features.cards[product.key];
+            const Icon = product.icon;
             return (
               <motion.div
-                key={dosa.key}
+                key={product.key}
                 variants={cardVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className={`group relative rounded-2xl border ${dosa.border} bg-surface-light/50 p-6 backdrop-blur-sm hover:shadow-lg ${dosa.glow} transition-shadow`}
+                className={`group relative rounded-2xl border ${product.border} bg-surface-light/50 p-6 backdrop-blur-sm hover:shadow-lg ${product.glow} transition-shadow`}
               >
                 {/* Icon */}
                 <div
-                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${dosa.bg}`}
+                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${product.bg}`}
                 >
                   <Icon className="h-6 w-6 text-white/80" />
                 </div>
@@ -109,7 +109,7 @@ export default function Features({ dict }: { dict: Dictionary }) {
                   {card.name}
                 </h3>
                 <p
-                  className={`mt-1 text-sm font-medium bg-gradient-to-r ${dosa.gradient} bg-clip-text text-transparent`}
+                  className={`mt-1 text-sm font-medium bg-gradient-to-r ${product.gradient} bg-clip-text text-transparent`}
                 >
                   {card.persona}
                 </p>
@@ -121,7 +121,7 @@ export default function Features({ dict }: { dict: Dictionary }) {
 
                 {/* Hover glow */}
                 <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${dosa.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
                 />
               </motion.div>
             );

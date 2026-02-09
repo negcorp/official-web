@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "NINE20 | Eastern Philosophy × AI",
-    "description": "Your Destiny, Decoded by Data & AI."
+    "title": "NINE20 | AI Made Accessible",
+    "description": "Making AI accessible for everyone. Built by NINE20."
   },
   "nav": {
     "products": "Products",
@@ -10,61 +10,66 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "badge": "AI Fortune Platform",
-    "title": "Your Destiny,",
-    "titleHighlight": "Decoded by",
-    "titleEnd": "Data & AI.",
-    "description": "Thousands of years of Eastern philosophical wisdom meets hyper-scale AI, delivering destiny analysis crafted exclusively for you.",
-    "cta": "Try for Free",
-    "ctaSecondary": "Learn More"
+    "badge": "AI Accessibility Platform",
+    "title": "AI for Everyone,",
+    "titleHighlight": "Simple & Powerful",
+    "titleEnd": "Made Accessible.",
+    "description": "We build services that make powerful AI context from Claude, GPT, Gemini, and more accessible to everyone — no technical expertise required. New AI service every month.",
+    "cta": "Try KRFortuneTeller920",
+    "ctaSecondary": "Learn More",
+    "stats": {
+      "monthlyLaunch": { "value": "Monthly", "label": "New Service Launches" },
+      "multiAI": { "value": "3+", "label": "AI Models Integrated" },
+      "global": { "value": "Global", "label": "Korean · English" }
+    }
   },
   "features": {
-    "badge": "AI Dosa Personas",
-    "title": "Four AI Masters Read Your Destiny",
-    "description": "Each AI Dosa brings a unique personality and expertise, analyzing your Saju from diverse perspectives.",
+    "badge": "Products",
+    "title": "AI Services Built by NINE20",
+    "description": "Making AI accessible for everyone, one new service at a time.",
     "cards": {
-      "muDosa": {
-        "name": "Mu-Dosa",
-        "persona": "Traditional Saju Master",
-        "description": "The essence of classical Myeongri studies, reimagined with AI. Delivers precise and profound Saju readings."
+      "saju920": {
+        "name": "KRFortuneTeller920",
+        "persona": "First Product · Launched",
+        "description": "Where Eastern philosophy meets AI. Four AI masters analyze your fortune from diverse perspectives."
       },
-      "claudeDosa": {
-        "name": "Claude-Dosa",
-        "persona": "Logical Analyst",
-        "description": "Data-driven logical analysis that systematically interprets your four pillars of destiny."
+      "multiAI": {
+        "name": "Multi-AI Engine",
+        "persona": "Core Technology",
+        "description": "Leverage Claude, GPT, Gemini and more through a single interface, optimized for each use case."
       },
-      "gDosa": {
-        "name": "G-Dosa",
-        "persona": "Trendy Counselor",
-        "description": "Fun, approachable fortune-telling with a modern Gen-Z sensibility."
+      "easyContext": {
+        "name": "Easy Context",
+        "persona": "Our Philosophy",
+        "description": "Making powerful AI context intuitive and accessible, even for people without technical backgrounds."
       },
-      "gemDosa": {
-        "name": "Gem-Dosa",
-        "persona": "Spiritual Guide",
-        "description": "Cross-cultural philosophical insights that illuminate your life's direction."
+      "comingSoon": {
+        "name": "Next Service",
+        "persona": "Coming Soon",
+        "description": "We launch a new AI service every month. Stay tuned for the next product."
       }
     }
   },
   "techHighlights": {
     "badge": "Technology",
-    "title": "Global Standard Tech Architecture",
-    "description": "Complex Eastern metaphysics, perfectly implemented with modern technology.",
+    "title": "Tech That Makes AI Easy",
+    "description": "Building modern technology so anyone can harness the power of AI.",
     "items": {
       "calendar": {
-        "title": "Manseryeok Engine",
-        "description": "Processes thousands of years of lunar calendar data and solar term calculations in milliseconds."
+        "title": "Domain-Specific Engines",
+        "description": "Purpose-built engines optimized for each service. KRFortuneTeller920's lunar calendar engine is the first."
       },
       "timezone": {
-        "title": "Global Timezone",
-        "description": "Guarantees accurate birth time conversion and Saju calculation from anywhere in the world."
+        "title": "Global Service",
+        "description": "Korean and English support by default. Services designed to work from anywhere in the world."
       },
       "ai": {
-        "title": "Multi-AI Engine",
-        "description": "Hybrid AI architecture leveraging GPT, Claude, Gemini, and more."
+        "title": "Multi-AI Architecture",
+        "description": "Hybrid AI architecture combining GPT, Claude, Gemini and more for each unique use case."
       },
       "personalization": {
-        "title": "Hyper-Personalized",
-        "description": "Precision analysis based on your birth date and time for tailored destiny insights."
+        "title": "Intuitive UX",
+        "description": "Designing intuitive user experiences that unlock powerful AI features without requiring technical knowledge."
       }
     }
   },
@@ -81,9 +86,9 @@
     }
   },
   "footer": {
-    "description": "Eastern Philosophy meets Hyper-scale AI. Your destiny, decoded by data.",
+    "description": "Making AI accessible for everyone. Built by NINE20.",
     "product": "Product",
-    "sajuApp": "NINE20 Saju App",
+    "sajuApp": "KRFortuneTeller920",
     "aiDosa": "AI Dosa",
     "pricing": "Pricing",
     "company": "Company",
@@ -94,5 +99,22 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "copyright": "© 2025 NINE20. All rights reserved."
+  },
+  "about": {
+    "badge": "About",
+    "title": "About NINE20",
+    "mission": "Making AI accessible for everyone.",
+    "description": "NINE20 is a solo AI startup. We build services that make powerful AI context from Claude, GPT, Gemini, and more accessible to everyone — no technical expertise required.",
+    "firstProduct": "First Product",
+    "firstProductDescription": "KRFortuneTeller920 is a fortune analysis service combining Eastern philosophy with AI. Four AI masters analyze your destiny from diverse perspectives.",
+    "vision": "Vision",
+    "visionDescription": "NINE20's goal is to launch a new AI service every month, making the benefits of AI technology available to everyone."
+  },
+  "blog": {
+    "badge": "Tech Blog",
+    "title": "Tech Blog",
+    "description": "NINE20's tech stories, coming soon.",
+    "comingSoon": "Coming Soon",
+    "comingSoonDescription": "We're preparing a blog about AI technology, our development journey, and product stories. Stay tuned!"
   }
 }

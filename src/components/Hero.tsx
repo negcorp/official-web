@@ -5,6 +5,12 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import type { Dictionary } from "@/lib/getDictionary";
 
 export default function Hero({ dict }: { dict: Dictionary }) {
+  const stats = [
+    dict.hero.stats.monthlyLaunch,
+    dict.hero.stats.multiAI,
+    dict.hero.stats.global,
+  ];
+
   return (
     <section
       id="hero"
@@ -95,11 +101,7 @@ export default function Hero({ dict }: { dict: Dictionary }) {
           transition={{ duration: 1, delay: 0.7 }}
           className="mt-20 grid grid-cols-3 gap-8 border-t border-border/50 pt-10"
         >
-          {[
-            { value: "4", label: "AI Dosa" },
-            { value: "100+", label: "Countries" },
-            { value: "24/7", label: "Available" },
-          ].map((stat) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl font-bold gradient-text sm:text-3xl">
                 {stat.value}
