@@ -110,6 +110,15 @@
     "vision": "Vision",
     "visionDescription": "NINE20's goal is to launch a new AI service every month, making the benefits of AI technology available to everyone."
   },
+  "legal": {
+    "saju920Privacy": {
+      "badge": "Privacy Policy",
+      "title": "Saju920 Privacy Policy",
+      "appName": "KRFortuneTeller920 (Saju920)",
+      "lastUpdated": "Last Updated",
+      "effectiveDate": "Effective Date"
+    }
+  },
   "blog": {
     "badge": "Tech Blog",
     "title": "Tech Blog",

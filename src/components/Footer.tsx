@@ -102,7 +102,7 @@ export default function Footer({
             <ul className="mt-4 space-y-3">
               <li>
                 <Link
-                  href="#"
+                  href={`/${lang}/legal/saju920/privacy`}
                   className="text-sm text-text-muted hover:text-text-primary transition-colors"
                 >
                   {dict.footer.privacy}
