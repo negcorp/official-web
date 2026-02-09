@@ -1,0 +1,69 @@
+# NINE20 Official Website - Cursor Rules
+
+## Context
+
+NINE20 is a solo AI startup making AI (Claude, GPT, Gemini) context accessible to non-technical users. The fortune-telling app (사주920 / KRFortuneTeller920) is just the first product. Goal: launch a new AI service monthly. Don't make the site fortune-telling focused.
+
+## Stack
+
+Next.js 16 (App Router, Turbopack) + React 19 + TypeScript 5 (strict) + Tailwind CSS v4 (`@theme inline`, no config file) + Framer Motion 12+ + Lucide React + i18n via Dictionary pattern + Middleware (negotiator).
+
+## Conventions
+
+### Must Follow
+- All user-facing text lives in `src/dictionaries/{ko,en}.json`. No hardcoded strings.
+- Components receive `dict: Dictionary` prop for translated text.
+- Use `"use client"` only when client interactivity is needed.
+- `Header`/`Footer` need both `dict` and `lang` props. Other sections need `dict` only.
+
+### Route Params (Next.js 16)
+Params are `Promise<{ lang: string }>`. Always await then cast:
+```ts
+const { lang: rawLang } = await params;
+const lang = rawLang as Locale;
+const dict = await getDictionary(lang);
+```
+
+### Tailwind CSS v4
+- Colors defined as CSS custom properties in `src/app/globals.css` `@theme inline` block.
+- No `tailwind.config.ts`. Edit globals.css to add/modify colors.
+- Key colors: `midnight`, `neon-purple`, `neon-blue`, `neon-cyan`, `text-primary`, `text-secondary`, `text-muted`, `border`
+- Utilities: `.gradient-text`, `.glow-purple`, `.glow-border`, `.bg-grid`
+
+### Framer Motion
+- Use `as const` on variant objects.
+- Ease values: `"easeOut" as const` (strict type requirement).
+
+### File Structure
+```
+src/
+├── lib/i18n.ts              # Locale type & config
+├── lib/getDictionary.ts     # Dictionary loader & type
+├── dictionaries/{ko,en}.json
+├── components/              # Shared components
+└── app/
+    ├── globals.css           # Tailwind v4 theme
+    ├── layout.tsx            # Root pass-through
+    ├── page.tsx              # / → /ko redirect
+    └── [lang]/
+        ├── layout.tsx        # HTML shell + metadata
+        ├── page.tsx          # Main landing
+        ├── about/page.tsx
+        └── blog/page.tsx
+```
+
+### Adding Pages
+1. Create folder/page.tsx under `app/[lang]/`
+2. Add text keys to both `ko.json` and `en.json`
+3. Handle async params + Locale cast
+4. Include Header/Footer with dict + lang props
+
+### Adding Languages
+1. Add to `locales` array in `src/lib/i18n.ts`
+2. Create `src/dictionaries/{locale}.json`
+3. Register loader in `src/lib/getDictionary.ts`
+
+## Gotchas
+- Node.js 24: module issues → `rm -rf node_modules package-lock.json && npm install`
+- SSG via `generateStaticParams` — add static params for new dynamic routes.
+- Fonts: Inter (Google Fonts) + Pretendard (jsDelivr), loaded in `[lang]/layout.tsx` head.
