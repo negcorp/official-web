@@ -1,0 +1,31 @@
+{
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "removeComments": false,
+    "showLineNumbers": true,
+    "topFilesLength": 10
+  },
+  "include": [
+    "src/**",
+    "middleware.ts",
+    "next.config.ts",
+    "package.json",
+    "tsconfig.json",
+    "postcss.config.mjs",
+    "CLAUDE.md"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "node_modules",
+      ".next",
+      "package-lock.json",
+      "*.ico",
+      "*.png",
+      "*.jpg",
+      "*.svg"
+    ]
+  }
+}
