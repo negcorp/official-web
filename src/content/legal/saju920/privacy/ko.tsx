@@ -11,7 +11,7 @@ export default function Saju920PrivacyKo() {
       <p>
         <strong>데이터 컨트롤러:</strong> NINE20
         <br />
-        <strong>연락처:</strong> privacy@nine20.com
+        <strong>연락처:</strong> me@nine20.net
       </p>
 
       <h2>2. 수집하는 개인정보</h2>
@@ -237,7 +237,7 @@ export default function Saju920PrivacyKo() {
       </ul>
 
       <p>
-        위 권리를 행사하시려면 <a href="mailto:privacy@nine20.com">privacy@nine20.com</a>으로
+        위 권리를 행사하시려면 <a href="mailto:me@nine20.net">me@nine20.net</a>으로
         연락해 주세요. 요청 접수 후 관련 법률에서 정하는 기한 내에 처리합니다.
       </p>
 
@@ -247,7 +247,7 @@ export default function Saju920PrivacyKo() {
         기준)의 아동을 대상으로 하지 않습니다. 아동의 개인정보가 수집된 사실을
         인지한 경우, 해당 정보를 즉시 삭제합니다. 아동의 개인정보가 수집되었다고
         판단되는 경우{" "}
-        <a href="mailto:privacy@nine20.com">privacy@nine20.com</a>으로 연락해
+        <a href="mailto:me@nine20.net">me@nine20.net</a>으로 연락해
         주세요.
       </p>
 
@@ -266,7 +266,7 @@ export default function Saju920PrivacyKo() {
       <ul>
         <li>
           <strong>이메일:</strong>{" "}
-          <a href="mailto:privacy@nine20.com">privacy@nine20.com</a>
+          <a href="mailto:me@nine20.net">me@nine20.net</a>
         </li>
       </ul>
 

@@ -47,14 +47,6 @@ export default function Footer({
                   href="#"
                   className="text-sm text-text-muted hover:text-text-primary transition-colors"
                 >
-                  {dict.footer.aiDosa}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
                   {dict.footer.pricing}
                 </Link>
               </li>

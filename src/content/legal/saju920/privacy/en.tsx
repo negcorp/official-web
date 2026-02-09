@@ -12,7 +12,7 @@ export default function Saju920PrivacyEn() {
       <p>
         <strong>Data Controller:</strong> NINE20
         <br />
-        <strong>Contact:</strong> privacy@nine20.com
+        <strong>Contact:</strong> me@nine20.net
       </p>
 
       <h2>2. Information We Collect</h2>
@@ -268,7 +268,7 @@ export default function Saju920PrivacyEn() {
 
       <p>
         To exercise any of these rights, please contact us at{" "}
-        <a href="mailto:privacy@nine20.com">privacy@nine20.com</a>. We will
+        <a href="mailto:me@nine20.net">me@nine20.net</a>. We will
         process your request within the timeframe required by applicable law.
       </p>
 
@@ -279,7 +279,7 @@ export default function Saju920PrivacyEn() {
         If we become aware that we have collected personal information from a
         child, we will delete that information immediately. If you believe a
         child&apos;s personal information has been collected, please contact us
-        at <a href="mailto:privacy@nine20.com">privacy@nine20.com</a>.
+        at <a href="mailto:me@nine20.net">me@nine20.net</a>.
       </p>
 
       <h2>11. Changes to This Policy</h2>
@@ -299,7 +299,7 @@ export default function Saju920PrivacyEn() {
       <ul>
         <li>
           <strong>Email:</strong>{" "}
-          <a href="mailto:privacy@nine20.com">privacy@nine20.com</a>
+          <a href="mailto:me@nine20.net">me@nine20.net</a>
         </li>
       </ul>
 
