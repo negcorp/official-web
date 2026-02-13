@@ -11,85 +11,33 @@ export default function Footer({
 }) {
   return (
     <footer className="border-t border-border/50 bg-surface/50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href={`/${lang}`} className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-neon-purple to-neon-blue">
-                <span className="text-sm font-bold text-white">N</span>
-              </div>
-              <span className="text-lg font-bold text-text-primary">
-                NINE<span className="gradient-text">20</span>
-              </span>
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <Link href={`/${lang}`} className="text-sm font-semibold text-text-primary">
+            NINE20
+          </Link>
+          <div className="flex items-center gap-5 text-sm text-text-muted">
+            <Link
+              href={`/${lang}/saju-preview`}
+              className="hover:text-text-primary transition-colors"
+            >
+              {dict.sajuPreview.teaser.title}
             </Link>
-            <p className="mt-4 text-sm text-text-muted leading-relaxed max-w-xs">
-              {dict.footer.description}
-            </p>
-          </div>
-
-          {/* Product */}
-          <div>
-            <h3 className="text-sm font-semibold text-text-primary">
-              {dict.footer.product}
-            </h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <Link
-                  href={`/${lang}/saju-preview`}
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.sajuApp}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-sm font-semibold text-text-primary">
-              {dict.footer.company}
-            </h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <Link
-                  href={`/${lang}/about`}
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.aboutUs}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold text-text-primary">
-              {dict.footer.legal}
-            </h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <Link
-                  href={`/${lang}/legal/saju920/privacy`}
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.privacy}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/legal/saju920/terms`}
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.terms}
-                </Link>
-              </li>
-            </ul>
+            <Link
+              href={`/${lang}/legal/saju920/privacy`}
+              className="hover:text-text-primary transition-colors"
+            >
+              {dict.footer.privacy}
+            </Link>
+            <Link
+              href={`/${lang}/legal/saju920/terms`}
+              className="hover:text-text-primary transition-colors"
+            >
+              {dict.footer.terms}
+            </Link>
           </div>
         </div>
-
-        {/* Bottom */}
-        <div className="mt-12 border-t border-border/50 pt-8">
+        <div className="mt-6 border-t border-border/50 pt-6">
           <p className="text-center text-sm text-text-muted">
             {dict.footer.copyright}
           </p>
