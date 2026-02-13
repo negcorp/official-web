@@ -118,6 +118,63 @@
       "effectiveDate": "Effective Date"
     }
   },
+  "sajuPreview": {
+    "teaser": {
+      "badge": "Free Trial",
+      "title": "Free Saju Preview",
+      "description": "Enter your birth date and gender to instantly check your basic saju result.",
+      "cta": "Try Free Preview"
+    },
+    "page": {
+      "badge": "Free Preview",
+      "title": "Free Saju Preview",
+      "description": "Check your basic saju information without login."
+    },
+    "status": {
+      "checking": "Checking backend status...",
+      "unavailable": "Free Saju preview is temporarily unavailable due to server status."
+    },
+    "form": {
+      "title": "Enter Birth Information",
+      "description": "Fill required fields to calculate your saju instantly.",
+      "birthYear": "Birth Year",
+      "birthMonth": "Birth Month",
+      "birthDay": "Birth Day",
+      "gender": "Gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "timezone": "Timezone",
+      "isLunar": "Lunar Calendar",
+      "isLeapMonth": "Leap Month",
+      "birthHour": "Birth Hour (Optional)",
+      "birthMinute": "Birth Minute (Optional)",
+      "submit": "Get Free Saju",
+      "submitting": "Loading...",
+      "hint": "Example: Asia/Seoul, America/New_York"
+    },
+    "errors": {
+      "required": "Please fill all required fields.",
+      "requestFailed": "Request failed. Please try again shortly."
+    },
+    "result": {
+      "title": "Saju Result",
+      "animal": "Zodiac",
+      "gender": "Gender",
+      "birthInfo": "Birth Date",
+      "pillars": "Pillars",
+      "year": "Year",
+      "month": "Month",
+      "day": "Day",
+      "hour": "Hour",
+      "ohaeng": "Five Elements",
+      "none": "N/A",
+      "mok": "Wood",
+      "hwa": "Fire",
+      "to": "Earth",
+      "geum": "Metal",
+      "su": "Water"
+    }
+  },
   "blog": {
     "badge": "Tech Blog",
     "title": "Tech Blog",

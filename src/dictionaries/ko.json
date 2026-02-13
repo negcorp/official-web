@@ -118,6 +118,63 @@
       "effectiveDate": "시행일"
     }
   },
+  "sajuPreview": {
+    "teaser": {
+      "badge": "무료 체험",
+      "title": "무료 사주보기",
+      "description": "생년월일과 성별만 입력하면 기본 사주를 바로 확인할 수 있습니다.",
+      "cta": "무료로 확인하기"
+    },
+    "page": {
+      "badge": "Free Preview",
+      "title": "무료 사주보기",
+      "description": "로그인 없이 기본 사주 정보를 확인해보세요."
+    },
+    "status": {
+      "checking": "서버 상태를 확인하고 있습니다...",
+      "unavailable": "현재 서버 상태로 무료 사주보기를 표시할 수 없습니다."
+    },
+    "form": {
+      "title": "사주 정보 입력",
+      "description": "필수 항목을 입력하면 즉시 사주 계산 결과를 보여드립니다.",
+      "birthYear": "출생 연도",
+      "birthMonth": "출생 월",
+      "birthDay": "출생 일",
+      "gender": "성별",
+      "genderMale": "남성",
+      "genderFemale": "여성",
+      "timezone": "타임존",
+      "isLunar": "음력",
+      "isLeapMonth": "윤달",
+      "birthHour": "출생 시(선택)",
+      "birthMinute": "출생 분(선택)",
+      "submit": "무료 사주 보기",
+      "submitting": "조회 중...",
+      "hint": "예: Asia/Seoul, America/New_York"
+    },
+    "errors": {
+      "required": "필수 값을 입력해 주세요.",
+      "requestFailed": "요청 처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요."
+    },
+    "result": {
+      "title": "사주 결과",
+      "animal": "띠",
+      "gender": "성별",
+      "birthInfo": "기준 생년월일",
+      "pillars": "사주 기둥",
+      "year": "연주",
+      "month": "월주",
+      "day": "일주",
+      "hour": "시주",
+      "ohaeng": "오행 분포",
+      "none": "없음",
+      "mok": "목",
+      "hwa": "화",
+      "to": "토",
+      "geum": "금",
+      "su": "수"
+    }
+  },
   "blog": {
     "badge": "Tech Blog",
     "title": "기술 블로그",
