@@ -116,6 +116,13 @@
       "appName": "사주920",
       "lastUpdated": "최종 수정일",
       "effectiveDate": "시행일"
+    },
+    "saju920Terms": {
+      "badge": "이용약관",
+      "title": "사주920 이용약관",
+      "description": "이 페이지는 이용약관 정식 공개 전 임시 안내 페이지입니다. 약관 전문은 검토 완료 후 업데이트됩니다.",
+      "lastUpdatedLabel": "최종 수정일",
+      "lastUpdated": "2026-02-13"
     }
   },
   "sajuPreview": {
@@ -132,7 +139,8 @@
     },
     "status": {
       "checking": "서버 상태를 확인하고 있습니다...",
-      "unavailable": "현재 서버 상태로 무료 사주보기를 표시할 수 없습니다."
+      "unavailable": "현재 서버 상태로 무료 사주보기를 표시할 수 없습니다.",
+      "retry": "다시 시도"
     },
     "form": {
       "title": "사주 정보 입력",

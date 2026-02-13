@@ -11,7 +11,7 @@ NINE20(나인이공) 공식 웹사이트. AI 기반 사주/운세 플랫폼 **NI
 | Styling | Tailwind CSS v4 |
 | Animation | Framer Motion 12 |
 | Icons | Lucide React |
-| i18n | Dictionary 패턴 (ko/en) + Middleware |
+| i18n | Dictionary 패턴 (ko/en) |
 | Runtime | Node.js 24+, React 19 |
 
 ## Getting Started
@@ -40,13 +40,21 @@ npm start
 npm run lint
 ```
 
-개발 서버 실행 후 `http://localhost:3000` 접속 시, 브라우저 언어 설정에 따라 `/ko` 또는 `/en`으로 자동 리다이렉트됩니다.
+개발 서버 실행 후 `http://localhost:3000` 접속 시 기본 로케일(`/ko`)로 이동합니다.
+
+### API 설정
+
+무료 사주보기는 런타임에 백엔드를 직접 호출합니다.
+
+```bash
+# optional (default: https://api.nine20.net)
+NEXT_PUBLIC_API_BASE_URL=https://api.nine20.net
+```
 
 ## Project Structure
 
 ```
 official-web/
-├── middleware.ts                  # 언어 감지 & 리다이렉트
 ├── next.config.ts
 ├── package.json
 ├── postcss.config.mjs
@@ -76,17 +84,22 @@ official-web/
         │
         └── [lang]/
             ├── layout.tsx         # 언어별 레이아웃 (메타데이터, 폰트)
-            └── page.tsx           # 메인 랜딩 페이지
+            ├── page.tsx           # 메인 랜딩 페이지
+            ├── saju-preview/page.tsx
+            ├── about/page.tsx
+            ├── blog/page.tsx
+            └── legal/saju920/
+                ├── privacy/page.tsx
+                └── terms/page.tsx
 ```
 
 ## i18n (국제화) 운영 가이드
 
 ### 작동 방식
 
-1. 사용자가 `/`에 접속하면 `middleware.ts`가 브라우저의 `Accept-Language` 헤더를 분석
-2. 매칭되는 로케일이 있으면 해당 언어로, 없으면 기본값(`ko`)으로 리다이렉트
-3. `app/[lang]/layout.tsx`에서 URL의 `lang` 파라미터를 읽어 해당 사전을 로드
-4. 모든 컴포넌트는 `dict` prop을 통해 번역된 텍스트를 렌더링
+1. 사용자가 `/`에 접속하면 `app/page.tsx`가 기본 로케일(`ko`)로 리다이렉트
+2. `app/[lang]/layout.tsx`에서 URL의 `lang` 파라미터를 읽어 사전 로드
+3. 모든 컴포넌트는 `dict` prop을 통해 번역된 텍스트를 렌더링
 
 ### 번역 텍스트 수정
 

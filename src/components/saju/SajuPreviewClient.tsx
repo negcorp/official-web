@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Dictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
 import {
   SajuPreviewApiError,
   checkSajuPreviewAvailability,
+  isSajuPreviewServiceUnavailableError,
   requestSajuPreview,
   type SajuPreviewResponse,
 } from "@/lib/sajuPreviewApi";
@@ -40,16 +41,6 @@ function formatPillar(name?: string, hanja?: string, fallback?: string) {
   return name || hanja || fallback || "";
 }
 
-function shouldMarkUnavailable(error: SajuPreviewApiError) {
-  if (error.type !== "http") {
-    return true;
-  }
-  if (error.status === 429) {
-    return true;
-  }
-  return (error.status ?? 0) >= 500;
-}
-
 export default function SajuPreviewClient({
   dict,
   lang,
@@ -74,29 +65,15 @@ export default function SajuPreviewClient({
     birthMinute: "",
   }));
 
-  useEffect(() => {
-    let active = true;
-
-    const run = async () => {
-      try {
-        const available = await checkSajuPreviewAvailability(getApiBaseUrl());
-        if (!active) {
-          return;
-        }
-        setStatus(available ? "available" : "unavailable");
-      } catch {
-        if (!active) {
-          return;
-        }
-        setStatus("unavailable");
-      }
-    };
-
-    run();
-    return () => {
-      active = false;
-    };
+  const refreshAvailability = useCallback(async () => {
+    setStatus("checking");
+    const available = await checkSajuPreviewAvailability(getApiBaseUrl());
+    setStatus(available ? "available" : "unavailable");
   }, []);
+
+  useEffect(() => {
+    void refreshAvailability();
+  }, [refreshAvailability]);
 
   const ohaengEntries = useMemo(() => {
     if (!result?.ohaeng_summary) {
@@ -148,15 +125,14 @@ export default function SajuPreviewClient({
       setResult(nextResult);
     } catch (error) {
       setResult(null);
-      if (error instanceof SajuPreviewApiError && shouldMarkUnavailable(error)) {
+      if (
+        error instanceof SajuPreviewApiError &&
+        isSajuPreviewServiceUnavailableError(error)
+      ) {
         setStatus("unavailable");
         return;
       }
-      setFormError(
-        error instanceof Error
-          ? error.message
-          : dict.sajuPreview.errors.requestFailed
-      );
+      setFormError(dict.sajuPreview.errors.requestFailed);
     } finally {
       setSubmitting(false);
     }
@@ -173,7 +149,14 @@ export default function SajuPreviewClient({
   if (status === "unavailable") {
     return (
       <div className="rounded-2xl border border-amber-400/40 bg-amber-400/10 p-8 text-amber-100">
-        {dict.sajuPreview.status.unavailable}
+        <p>{dict.sajuPreview.status.unavailable}</p>
+        <button
+          type="button"
+          onClick={() => void refreshAvailability()}
+          className="mt-4 inline-flex rounded-full border border-amber-200/50 px-4 py-2 text-sm font-medium hover:bg-amber-200/10"
+        >
+          {dict.sajuPreview.status.retry}
+        </button>
       </div>
     );
   }

@@ -116,6 +116,13 @@
       "appName": "KRFortuneTeller920 (Saju920)",
       "lastUpdated": "Last Updated",
       "effectiveDate": "Effective Date"
+    },
+    "saju920Terms": {
+      "badge": "Terms of Service",
+      "title": "Saju920 Terms of Service",
+      "description": "This is a temporary page before full terms publication. The complete terms text will be updated after review.",
+      "lastUpdatedLabel": "Last Updated",
+      "lastUpdated": "2026-02-13"
     }
   },
   "sajuPreview": {
@@ -132,7 +139,8 @@
     },
     "status": {
       "checking": "Checking backend status...",
-      "unavailable": "Free Saju preview is temporarily unavailable due to server status."
+      "unavailable": "Free Saju preview is temporarily unavailable due to server status.",
+      "retry": "Retry"
     },
     "form": {
       "title": "Enter Birth Information",

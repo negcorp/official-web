@@ -50,6 +50,18 @@ export class SajuPreviewApiError extends Error {
   }
 }
 
+export function isSajuPreviewServiceUnavailableError(
+  error: SajuPreviewApiError
+): boolean {
+  if (error.type !== "http") {
+    return true;
+  }
+  if (error.status === 429) {
+    return true;
+  }
+  return (error.status ?? 0) >= 500;
+}
+
 function buildUrl(baseUrl: string, path: string) {
   const normalized = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
   return `${normalized}${path}`;
@@ -58,18 +70,28 @@ function buildUrl(baseUrl: string, path: string) {
 export async function checkSajuPreviewAvailability(
   baseUrl: string
 ): Promise<boolean> {
-  const response = await fetch(buildUrl(baseUrl, "/openapi.json"), {
-    method: "GET",
-    cache: "no-store",
-  });
+  let response: Response;
+  try {
+    response = await fetch(buildUrl(baseUrl, "/openapi.json"), {
+      method: "GET",
+      cache: "no-store",
+    });
+  } catch {
+    return false;
+  }
 
   if (!response.ok) {
     return false;
   }
 
-  const data = (await response.json()) as {
-    paths?: Record<string, unknown>;
-  };
+  let data: { paths?: Record<string, unknown> };
+  try {
+    data = (await response.json()) as {
+      paths?: Record<string, unknown>;
+    };
+  } catch {
+    return false;
+  }
 
   return Boolean(data.paths?.["/api/v1/saju/preview"]);
 }

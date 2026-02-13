@@ -23,7 +23,6 @@ export default function Header({
 
   const navItems = [
     { label: dict.nav.products, href: `/${lang}#features` },
-    { label: dict.nav.techBlog, href: `/${lang}/blog` },
     { label: dict.nav.about, href: `/${lang}/about` },
   ];
 

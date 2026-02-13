@@ -1,0 +1,118 @@
+import { describe, expect, it, vi, afterEach } from "vitest";
+import {
+  SajuPreviewApiError,
+  checkSajuPreviewAvailability,
+  isSajuPreviewServiceUnavailableError,
+  requestSajuPreview,
+  type SajuPreviewRequest,
+} from "@/lib/sajuPreviewApi";
+
+const API_BASE = "https://api.nine20.net";
+
+const requestPayload: SajuPreviewRequest = {
+  birth_year: 1990,
+  birth_month: 5,
+  birth_day: 15,
+  gender: "M",
+  timezone: "Asia/Seoul",
+};
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
+
+describe("checkSajuPreviewAvailability", () => {
+  it("returns true when preview path exists", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ paths: { "/api/v1/saju/preview": {} } }),
+      })
+    );
+
+    const available = await checkSajuPreviewAvailability(API_BASE);
+    expect(available).toBe(true);
+  });
+
+  it("returns false when openapi payload is invalid json", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => {
+          throw new Error("invalid json");
+        },
+      })
+    );
+
+    const available = await checkSajuPreviewAvailability(API_BASE);
+    expect(available).toBe(false);
+  });
+});
+
+describe("requestSajuPreview", () => {
+  it("returns parsed preview result on success", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          animal: "말",
+          gender: "M",
+          pillars: { year: null, month: null, day: null, hour: null },
+        }),
+      })
+    );
+
+    const result = await requestSajuPreview(API_BASE, requestPayload, "ko");
+    expect(result.animal).toBe("말");
+  });
+
+  it("throws http error with status for failed response", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: false,
+        status: 503,
+        json: async () => ({ detail: "service unavailable" }),
+      })
+    );
+
+    await expect(
+      requestSajuPreview(API_BASE, requestPayload, "ko")
+    ).rejects.toMatchObject({
+      status: 503,
+      type: "http",
+    });
+  });
+});
+
+describe("isSajuPreviewServiceUnavailableError", () => {
+  it("returns true for network errors", () => {
+    const error = new SajuPreviewApiError("network", undefined, "network");
+    expect(isSajuPreviewServiceUnavailableError(error)).toBe(true);
+  });
+
+  it("returns true for 429 and 5xx http errors", () => {
+    expect(
+      isSajuPreviewServiceUnavailableError(
+        new SajuPreviewApiError("rate-limit", 429, "http")
+      )
+    ).toBe(true);
+    expect(
+      isSajuPreviewServiceUnavailableError(
+        new SajuPreviewApiError("server", 500, "http")
+      )
+    ).toBe(true);
+  });
+
+  it("returns false for 4xx business errors", () => {
+    expect(
+      isSajuPreviewServiceUnavailableError(
+        new SajuPreviewApiError("bad-request", 400, "http")
+      )
+    ).toBe(false);
+  });
+});

@@ -36,18 +36,10 @@ export default function Footer({
             <ul className="mt-4 space-y-3">
               <li>
                 <Link
-                  href="#"
+                  href={`/${lang}/saju-preview`}
                   className="text-sm text-text-muted hover:text-text-primary transition-colors"
                 >
                   {dict.footer.sajuApp}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.pricing}
                 </Link>
               </li>
             </ul>
@@ -65,22 +57,6 @@ export default function Footer({
                   className="text-sm text-text-muted hover:text-text-primary transition-colors"
                 >
                   {dict.footer.aboutUs}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/blog`}
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.techBlog}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {dict.footer.careers}
                 </Link>
               </li>
             </ul>
@@ -102,7 +78,7 @@ export default function Footer({
               </li>
               <li>
                 <Link
-                  href="#"
+                  href={`/${lang}/legal/saju920/terms`}
                   className="text-sm text-text-muted hover:text-text-primary transition-colors"
                 >
                   {dict.footer.terms}
