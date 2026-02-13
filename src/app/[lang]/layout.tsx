@@ -15,9 +15,31 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale = lang as Locale;
   const dict = await getDictionary(locale);
+  const canonicalUrl = `https://nine20.net/${locale}`;
   return {
     title: dict.metadata.title,
     description: dict.metadata.description,
+    metadataBase: new URL("https://nine20.net"),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        ko: "https://nine20.net/ko",
+        en: "https://nine20.net/en",
+      },
+    },
+    openGraph: {
+      title: dict.metadata.title,
+      description: dict.metadata.description,
+      url: canonicalUrl,
+      siteName: "NINE20",
+      type: "website",
+      locale: locale === "ko" ? "ko_KR" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.metadata.title,
+      description: dict.metadata.description,
+    },
   };
 }
 

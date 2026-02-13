@@ -49,7 +49,17 @@ npm run lint
 ```bash
 # optional (default: https://api.nine20.net)
 NEXT_PUBLIC_API_BASE_URL=https://api.nine20.net
+
+# optional store URLs
+NEXT_PUBLIC_APPSTORE_URL=https://apps.apple.com
+NEXT_PUBLIC_PLAYSTORE_URL=https://play.google.com/store/apps
 ```
+
+### 로고 반영
+
+회사 로고가 준비되면 아래 파일만 교체하면 헤더/푸터/메인 허브에 자동 반영됩니다.
+
+- `public/brand/logo-mark.svg`
 
 ## Project Structure
 

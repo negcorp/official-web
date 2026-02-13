@@ -1,6 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import type { Dictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
+import {
+  getAppStoreUrl,
+  getPlayStoreUrl,
+  getPreferredStoreByUserAgent,
+} from "@/lib/runtimeConfig";
+import { trackEvent } from "@/lib/analytics";
 
 export default function AppStoreHub({
   dict,
@@ -9,12 +19,29 @@ export default function AppStoreHub({
   dict: Dictionary;
   lang: Locale;
 }) {
+  const [preferredStore] = useState<
+    "appstore" | "playstore"
+  >(() =>
+    typeof window === "undefined"
+      ? "appstore"
+      : getPreferredStoreByUserAgent(navigator.userAgent)
+  );
+
+  const appStoreUrl = getAppStoreUrl();
+  const playStoreUrl = getPlayStoreUrl();
+
   return (
     <section className="pt-28 pb-12">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-white/20 bg-black p-8 sm:p-12">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-white/30 bg-white text-3xl font-bold text-black">
-            N
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-white/30 bg-white">
+            <Image
+              src="/brand/logo-mark.svg"
+              alt="NINE20 logo"
+              width={44}
+              height={44}
+              className="h-11 w-11 object-contain"
+            />
           </div>
           <p className="mt-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
             {dict.appHub.badge}
@@ -28,18 +55,32 @@ export default function AppStoreHub({
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             <Link
-              href={dict.appHub.appStoreUrl}
+              href={appStoreUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white px-4 py-3 text-sm font-semibold text-black hover:bg-white/90"
+              onClick={() =>
+                trackEvent("store_click", { platform: "appstore", lang })
+              }
+              className={`inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
+                preferredStore === "appstore"
+                  ? "border-white/30 bg-white text-black hover:bg-white/90"
+                  : "border-white/30 text-white hover:bg-white/10"
+              }`}
             >
               {dict.appHub.appStoreCta}
             </Link>
             <Link
-              href={dict.appHub.playStoreUrl}
+              href={playStoreUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-xl border border-white/30 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10"
+              onClick={() =>
+                trackEvent("store_click", { platform: "playstore", lang })
+              }
+              className={`inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
+                preferredStore === "playstore"
+                  ? "border-white/30 bg-white text-black hover:bg-white/90"
+                  : "border-white/30 text-white hover:bg-white/10"
+              }`}
             >
               {dict.appHub.playStoreCta}
             </Link>
@@ -52,6 +93,7 @@ export default function AppStoreHub({
           <div className="mt-8 border-t border-white/10 pt-6 text-center">
             <Link
               href={`/${lang}/saju-preview`}
+              onClick={() => trackEvent("free_saju_click", { lang })}
               className="inline-flex rounded-full border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black"
             >
               {dict.appHub.freeSajuCta}

@@ -29,8 +29,6 @@
     "description": "We are preparing launch on iOS App Store and Google Play. Until release, you can use the free saju preview on web.",
     "appStoreCta": "App Store (Soon)",
     "playStoreCta": "Google Play (Soon)",
-    "appStoreUrl": "https://apps.apple.com",
-    "playStoreUrl": "https://play.google.com/store/apps",
     "storeNotice": "Store links are temporary placeholders and will be replaced with final app URLs.",
     "freeSajuCta": "Use Free Saju Preview"
   },
@@ -151,7 +149,9 @@
     "status": {
       "checking": "Checking backend status...",
       "unavailable": "Free Saju preview is temporarily unavailable due to server status.",
-      "retry": "Retry"
+      "retry": "Retry",
+      "autoRetryPrefix": "Auto retry in",
+      "autoRetrySuffix": "seconds"
     },
     "form": {
       "title": "Enter Birth Information",

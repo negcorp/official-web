@@ -52,6 +52,7 @@ export default function SajuPreviewClient({
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState<string>("");
   const [result, setResult] = useState<SajuPreviewResponse | null>(null);
+  const [retryCountdown, setRetryCountdown] = useState(30);
   const [form, setForm] = useState<FormState>(() => ({
     birthYear: "",
     birthMonth: "",
@@ -74,6 +75,25 @@ export default function SajuPreviewClient({
   useEffect(() => {
     void refreshAvailability();
   }, [refreshAvailability]);
+
+  useEffect(() => {
+    if (status !== "unavailable") {
+      return;
+    }
+
+    setRetryCountdown(30);
+    const interval = setInterval(() => {
+      setRetryCountdown((prev) => {
+        if (prev <= 1) {
+          void refreshAvailability();
+          return 30;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [status, refreshAvailability]);
 
   const ohaengEntries = useMemo(() => {
     if (!result?.ohaeng_summary) {
@@ -157,6 +177,10 @@ export default function SajuPreviewClient({
         >
           {dict.sajuPreview.status.retry}
         </button>
+        <p className="mt-3 text-xs text-amber-200/80">
+          {dict.sajuPreview.status.autoRetryPrefix} {retryCountdown}
+          {dict.sajuPreview.status.autoRetrySuffix}
+        </p>
       </div>
     );
   }
@@ -243,8 +267,16 @@ export default function SajuPreviewClient({
               setForm((prev) => ({ ...prev, timezone: e.target.value }))
             }
             required
+            list="timezone-options"
             className="mt-1 w-full rounded-lg border border-border bg-black/20 px-3 py-2 text-text-primary outline-none focus:border-neon-purple"
           />
+          <datalist id="timezone-options">
+            <option value="Asia/Seoul" />
+            <option value="Asia/Tokyo" />
+            <option value="America/Los_Angeles" />
+            <option value="America/New_York" />
+            <option value="Europe/London" />
+          </datalist>
           <span className="mt-1 block text-xs text-text-muted">
             {dict.sajuPreview.form.hint}
           </span>
