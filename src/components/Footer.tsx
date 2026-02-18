@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Dictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
 import BrandLogo from "@/components/BrandLogo";
+import { getLegalPath } from "@/lib/legalRoutes";
 
 export default function Footer({
   dict,
@@ -23,13 +24,13 @@ export default function Footer({
               {dict.sajuPreview.teaser.title}
             </Link>
             <Link
-              href={`/${lang}/legal/saju920/privacy`}
+              href={getLegalPath(lang, "privacy")}
               className="hover:text-text-primary transition-colors"
             >
               {dict.footer.privacy}
             </Link>
             <Link
-              href={`/${lang}/legal/saju920/terms`}
+              href={getLegalPath(lang, "terms")}
               className="hover:text-text-primary transition-colors"
             >
               {dict.footer.terms}

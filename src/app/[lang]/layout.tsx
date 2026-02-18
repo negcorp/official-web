@@ -16,16 +16,26 @@ export async function generateMetadata({
   const locale = lang as Locale;
   const dict = await getDictionary(locale);
   const canonicalUrl = `https://nine20.net/${locale}`;
+  const ogLocaleByLang: Record<Locale, string> = {
+    ko: "ko_KR",
+    en: "en_US",
+    ja: "ja_JP",
+    "zh-CN": "zh_CN",
+    "zh-TW": "zh_TW",
+    es: "es_ES",
+    fr: "fr_FR",
+  };
+  const alternateLanguages = Object.fromEntries(
+    i18n.locales.map((item) => [item, `https://nine20.net/${item}`])
+  );
+
   return {
     title: dict.metadata.title,
     description: dict.metadata.description,
     metadataBase: new URL("https://nine20.net"),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        ko: "https://nine20.net/ko",
-        en: "https://nine20.net/en",
-      },
+      languages: alternateLanguages,
     },
     openGraph: {
       title: dict.metadata.title,
@@ -33,7 +43,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       siteName: "NINE20",
       type: "website",
-      locale: locale === "ko" ? "ko_KR" : "en_US",
+      locale: ogLocaleByLang[locale],
     },
     twitter: {
       card: "summary_large_image",

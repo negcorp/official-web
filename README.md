@@ -98,7 +98,7 @@ official-web/
             ├── saju-preview/page.tsx
             ├── about/page.tsx
             ├── blog/page.tsx
-            └── legal/saju920/
+            └── legal/saju/
                 ├── privacy/page.tsx
                 └── terms/page.tsx
 ```
