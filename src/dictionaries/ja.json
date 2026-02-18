@@ -5,7 +5,7 @@
   },
   "nav": {
     "products": "プロダクト",
-    "techBlog": "技術ブログ",
+    "techBlog": "四柱推命ブログ",
     "about": "紹介",
     "getStarted": "はじめる"
   },
@@ -18,9 +18,18 @@
     "cta": "Saju920を試す",
     "ctaSecondary": "詳しく見る",
     "stats": {
-      "monthlyLaunch": { "value": "Monthly", "label": "毎月新サービス公開" },
-      "multiAI": { "value": "3+", "label": "統合AIモデル" },
-      "global": { "value": "Global", "label": "韓国語・英語" }
+      "monthlyLaunch": {
+        "value": "Monthly",
+        "label": "毎月新サービス公開"
+      },
+      "multiAI": {
+        "value": "3+",
+        "label": "統合AIモデル"
+      },
+      "global": {
+        "value": "Global",
+        "label": "韓国語・英語"
+      }
     }
   },
   "appHub": {
@@ -30,7 +39,8 @@
     "appStoreCta": "App Store（予定）",
     "playStoreCta": "Google Play（予定）",
     "storeNotice": "ストアリンクは仮のURLです。公開時に正式リンクへ差し替えます。",
-    "freeSajuCta": "無料サジュを見る"
+    "freeSajuCta": "無料サジュを見る",
+    "blogCta": "四柱推命ブログを見る"
   },
   "features": {
     "badge": "プロダクト",
@@ -86,12 +96,30 @@
     "badge": "技術スタック",
     "title": "NINE20を支える技術",
     "items": {
-      "flutter": { "name": "Flutter", "role": "クロスプラットフォームアプリ" },
-      "fastapi": { "name": "FastAPI", "role": "高性能バックエンド" },
-      "python": { "name": "Python", "role": "AI/MLエンジン" },
-      "nextjs": { "name": "Next.js", "role": "Webフロントエンド" },
-      "refine": { "name": "Refine", "role": "管理ダッシュボード" },
-      "postgres": { "name": "PostgreSQL", "role": "データベース" }
+      "flutter": {
+        "name": "Flutter",
+        "role": "クロスプラットフォームアプリ"
+      },
+      "fastapi": {
+        "name": "FastAPI",
+        "role": "高性能バックエンド"
+      },
+      "python": {
+        "name": "Python",
+        "role": "AI/MLエンジン"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "role": "Webフロントエンド"
+      },
+      "refine": {
+        "name": "Refine",
+        "role": "管理ダッシュボード"
+      },
+      "postgres": {
+        "name": "PostgreSQL",
+        "role": "データベース"
+      }
     }
   },
   "footer": {
@@ -101,7 +129,7 @@
     "pricing": "料金",
     "company": "会社",
     "aboutUs": "会社紹介",
-    "techBlog": "技術ブログ",
+    "techBlog": "四柱推命ブログ",
     "careers": "採用",
     "legal": "法的情報",
     "privacy": "プライバシーポリシー",
@@ -195,10 +223,10 @@
     }
   },
   "blog": {
-    "badge": "Tech Blog",
-    "title": "技術ブログ",
-    "description": "NINE20の技術ストーリーを近日公開します。",
+    "badge": "Saju Blog",
+    "title": "四柱推命ブログ",
+    "description": "四柱推命の学習と実践解釈ガイドを共有します。",
     "comingSoon": "準備中",
-    "comingSoonDescription": "AI技術、開発の歩み、プロダクトストーリーを共有するブログを準備しています。しばらくお待ちください。"
+    "comingSoonDescription": "入門から実践解釈まで、多言語シリーズを継続して公開します。"
   }
 }

@@ -5,7 +5,7 @@
   },
   "nav": {
     "products": "Produits",
-    "techBlog": "Blog technique",
+    "techBlog": "Blog Saju",
     "about": "À propos",
     "getStarted": "Commencer"
   },
@@ -18,9 +18,18 @@
     "cta": "Essayer Saju920",
     "ctaSecondary": "En savoir plus",
     "stats": {
-      "monthlyLaunch": { "value": "Monthly", "label": "Nouveaux services chaque mois" },
-      "multiAI": { "value": "3+", "label": "Modèles IA intégrés" },
-      "global": { "value": "Global", "label": "Coréen · Anglais" }
+      "monthlyLaunch": {
+        "value": "Monthly",
+        "label": "Nouveaux services chaque mois"
+      },
+      "multiAI": {
+        "value": "3+",
+        "label": "Modèles IA intégrés"
+      },
+      "global": {
+        "value": "Global",
+        "label": "Coréen · Anglais"
+      }
     }
   },
   "appHub": {
@@ -30,7 +39,8 @@
     "appStoreCta": "App Store (Bientôt)",
     "playStoreCta": "Google Play (Bientôt)",
     "storeNotice": "Les liens vers les stores sont temporaires et seront remplacés par les liens finaux lors du lancement.",
-    "freeSajuCta": "Utiliser l'aperçu gratuit"
+    "freeSajuCta": "Utiliser l'aperçu gratuit",
+    "blogCta": "Voir le blog saju"
   },
   "features": {
     "badge": "Produits",
@@ -86,12 +96,30 @@
     "badge": "Stack technique",
     "title": "Propulsé par NINE20",
     "items": {
-      "flutter": { "name": "Flutter", "role": "Application multiplateforme" },
-      "fastapi": { "name": "FastAPI", "role": "Backend haute performance" },
-      "python": { "name": "Python", "role": "Moteur IA/ML" },
-      "nextjs": { "name": "Next.js", "role": "Frontend web" },
-      "refine": { "name": "Refine", "role": "Tableau de bord admin" },
-      "postgres": { "name": "PostgreSQL", "role": "Base de données" }
+      "flutter": {
+        "name": "Flutter",
+        "role": "Application multiplateforme"
+      },
+      "fastapi": {
+        "name": "FastAPI",
+        "role": "Backend haute performance"
+      },
+      "python": {
+        "name": "Python",
+        "role": "Moteur IA/ML"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "role": "Frontend web"
+      },
+      "refine": {
+        "name": "Refine",
+        "role": "Tableau de bord admin"
+      },
+      "postgres": {
+        "name": "PostgreSQL",
+        "role": "Base de données"
+      }
     }
   },
   "footer": {
@@ -101,7 +129,7 @@
     "pricing": "Tarifs",
     "company": "Entreprise",
     "aboutUs": "À propos de nous",
-    "techBlog": "Blog technique",
+    "techBlog": "Blog Saju",
     "careers": "Carrières",
     "legal": "Mentions légales",
     "privacy": "Politique de confidentialité",
@@ -195,10 +223,10 @@
     }
   },
   "blog": {
-    "badge": "Tech Blog",
-    "title": "Blog technique",
-    "description": "Les histoires techniques de NINE20 arrivent bientôt.",
+    "badge": "Saju Blog",
+    "title": "Blog Saju",
+    "description": "Guides pratiques pour apprendre et interpréter le saju.",
     "comingSoon": "Bientôt disponible",
-    "comingSoonDescription": "Nous préparons un blog sur la technologie IA, notre parcours de développement et les histoires produit. Restez à l'écoute !"
+    "comingSoonDescription": "De l’initiation à l’interprétation pratique, cette série multilingue sera publiée en continu."
   }
 }

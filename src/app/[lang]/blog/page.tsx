@@ -1,9 +1,43 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getDictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
 import { getSajuSeriesPosts } from "@/content/blog/sajuSeries";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang: rawLang } = await params;
+  const lang = rawLang as Locale;
+  const dict = await getDictionary(lang);
+  const title = `${dict.blog.title} | NINE20`;
+  const description = dict.blog.description;
+  const url = `https://nine20.net/${lang}/blog`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      siteName: "NINE20",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 export default async function BlogPage({
   params,

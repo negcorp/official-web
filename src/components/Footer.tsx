@@ -24,6 +24,12 @@ export default function Footer({
               {dict.sajuPreview.teaser.title}
             </Link>
             <Link
+              href={`/${lang}/blog`}
+              className="hover:text-text-primary transition-colors"
+            >
+              {dict.footer.techBlog}
+            </Link>
+            <Link
               href={getLegalPath(lang, "privacy")}
               className="hover:text-text-primary transition-colors"
             >

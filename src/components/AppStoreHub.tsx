@@ -91,13 +91,21 @@ export default function AppStoreHub({
           </p>
 
           <div className="mt-8 border-t border-white/10 pt-6 text-center">
-            <Link
-              href={`/${lang}/saju-preview`}
-              onClick={() => trackEvent("free_saju_click", { lang })}
-              className="inline-flex rounded-full border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black"
-            >
-              {dict.appHub.freeSajuCta}
-            </Link>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href={`/${lang}/saju-preview`}
+                onClick={() => trackEvent("free_saju_click", { lang })}
+                className="inline-flex rounded-full border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black"
+              >
+                {dict.appHub.freeSajuCta}
+              </Link>
+              <Link
+                href={`/${lang}/blog`}
+                className="inline-flex rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 hover:border-white hover:text-white"
+              >
+                {dict.appHub.blogCta}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

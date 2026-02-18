@@ -42,6 +42,13 @@ export default function Header({
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
+            <Link
+              href={`/${lang}/blog`}
+              className="hidden items-center rounded-full border border-border px-4 py-1.5 text-sm font-medium text-text-secondary transition-colors hover:border-neon-purple/50 hover:text-text-primary sm:inline-flex"
+            >
+              {dict.nav.techBlog}
+            </Link>
+
             {/* Language Switcher */}
             <label className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-text-secondary hover:text-text-primary hover:border-neon-purple/50 transition-all">
               <Globe className="h-3.5 w-3.5" />

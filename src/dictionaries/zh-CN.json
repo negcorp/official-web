@@ -5,7 +5,7 @@
   },
   "nav": {
     "products": "产品",
-    "techBlog": "技术博客",
+    "techBlog": "四柱博客",
     "about": "关于",
     "getStarted": "开始使用"
   },
@@ -18,9 +18,18 @@
     "cta": "体验 Saju920",
     "ctaSecondary": "了解更多",
     "stats": {
-      "monthlyLaunch": { "value": "Monthly", "label": "每月发布新服务" },
-      "multiAI": { "value": "3+", "label": "集成AI模型" },
-      "global": { "value": "Global", "label": "韩语 · 英语" }
+      "monthlyLaunch": {
+        "value": "Monthly",
+        "label": "每月发布新服务"
+      },
+      "multiAI": {
+        "value": "3+",
+        "label": "集成AI模型"
+      },
+      "global": {
+        "value": "Global",
+        "label": "韩语 · 英语"
+      }
     }
   },
   "appHub": {
@@ -30,7 +39,8 @@
     "appStoreCta": "App Store（即将上线）",
     "playStoreCta": "Google Play（即将上线）",
     "storeNotice": "当前商店链接为临时占位，正式发布后将替换为最终链接。",
-    "freeSajuCta": "使用免费四柱预览"
+    "freeSajuCta": "使用免费四柱预览",
+    "blogCta": "查看四柱博客"
   },
   "features": {
     "badge": "产品",
@@ -86,12 +96,30 @@
     "badge": "技术栈",
     "title": "驱动 NINE20 的技术",
     "items": {
-      "flutter": { "name": "Flutter", "role": "跨平台应用" },
-      "fastapi": { "name": "FastAPI", "role": "高性能后端" },
-      "python": { "name": "Python", "role": "AI/ML 引擎" },
-      "nextjs": { "name": "Next.js", "role": "Web 前端" },
-      "refine": { "name": "Refine", "role": "管理后台" },
-      "postgres": { "name": "PostgreSQL", "role": "数据库" }
+      "flutter": {
+        "name": "Flutter",
+        "role": "跨平台应用"
+      },
+      "fastapi": {
+        "name": "FastAPI",
+        "role": "高性能后端"
+      },
+      "python": {
+        "name": "Python",
+        "role": "AI/ML 引擎"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "role": "Web 前端"
+      },
+      "refine": {
+        "name": "Refine",
+        "role": "管理后台"
+      },
+      "postgres": {
+        "name": "PostgreSQL",
+        "role": "数据库"
+      }
     }
   },
   "footer": {
@@ -101,7 +129,7 @@
     "pricing": "价格",
     "company": "公司",
     "aboutUs": "关于我们",
-    "techBlog": "技术博客",
+    "techBlog": "四柱博客",
     "careers": "招聘",
     "legal": "法律信息",
     "privacy": "隐私政策",
@@ -195,10 +223,10 @@
     }
   },
   "blog": {
-    "badge": "Tech Blog",
-    "title": "技术博客",
-    "description": "NINE20 的技术故事，敬请期待。",
+    "badge": "Saju Blog",
+    "title": "四柱博客",
+    "description": "分享四柱学习与实战解读指南。",
     "comingSoon": "即将上线",
-    "comingSoonDescription": "我们正在准备分享 AI 技术、开发历程和产品故事的博客，敬请期待。"
+    "comingSoonDescription": "从入门到实战解读，多语言系列将持续发布。"
   }
 }

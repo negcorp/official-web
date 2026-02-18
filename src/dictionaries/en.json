@@ -5,7 +5,7 @@
   },
   "nav": {
     "products": "Products",
-    "techBlog": "Tech Blog",
+    "techBlog": "Saju Blog",
     "about": "About",
     "getStarted": "Get Started"
   },
@@ -18,9 +18,18 @@
     "cta": "Try KRFortuneTeller920",
     "ctaSecondary": "Learn More",
     "stats": {
-      "monthlyLaunch": { "value": "Monthly", "label": "New Service Launches" },
-      "multiAI": { "value": "3+", "label": "AI Models Integrated" },
-      "global": { "value": "Global", "label": "Korean · English" }
+      "monthlyLaunch": {
+        "value": "Monthly",
+        "label": "New Service Launches"
+      },
+      "multiAI": {
+        "value": "3+",
+        "label": "AI Models Integrated"
+      },
+      "global": {
+        "value": "Global",
+        "label": "Korean · English"
+      }
     }
   },
   "appHub": {
@@ -30,7 +39,8 @@
     "appStoreCta": "App Store (Soon)",
     "playStoreCta": "Google Play (Soon)",
     "storeNotice": "Store links are temporary placeholders and will be replaced with final app URLs.",
-    "freeSajuCta": "Use Free Saju Preview"
+    "freeSajuCta": "Use Free Saju Preview",
+    "blogCta": "Read Saju Blog"
   },
   "features": {
     "badge": "Products",
@@ -86,12 +96,30 @@
     "badge": "Tech Stack",
     "title": "Powered by NINE20",
     "items": {
-      "flutter": { "name": "Flutter", "role": "Cross-platform App" },
-      "fastapi": { "name": "FastAPI", "role": "High-performance API" },
-      "python": { "name": "Python", "role": "AI/ML Engine" },
-      "nextjs": { "name": "Next.js", "role": "Web Frontend" },
-      "refine": { "name": "Refine", "role": "Admin Dashboard" },
-      "postgres": { "name": "PostgreSQL", "role": "Database" }
+      "flutter": {
+        "name": "Flutter",
+        "role": "Cross-platform App"
+      },
+      "fastapi": {
+        "name": "FastAPI",
+        "role": "High-performance API"
+      },
+      "python": {
+        "name": "Python",
+        "role": "AI/ML Engine"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "role": "Web Frontend"
+      },
+      "refine": {
+        "name": "Refine",
+        "role": "Admin Dashboard"
+      },
+      "postgres": {
+        "name": "PostgreSQL",
+        "role": "Database"
+      }
     }
   },
   "footer": {
@@ -101,7 +129,7 @@
     "pricing": "Pricing",
     "company": "Company",
     "aboutUs": "About Us",
-    "techBlog": "Tech Blog",
+    "techBlog": "Saju Blog",
     "careers": "Careers",
     "legal": "Legal",
     "privacy": "Privacy Policy",
@@ -195,10 +223,10 @@
     }
   },
   "blog": {
-    "badge": "Tech Blog",
-    "title": "Tech Blog",
-    "description": "NINE20's tech stories, coming soon.",
+    "badge": "Saju Blog",
+    "title": "Saju Blog",
+    "description": "Practical guides for studying and reading saju.",
     "comingSoon": "Coming Soon",
-    "comingSoonDescription": "We're preparing a blog about AI technology, our development journey, and product stories. Stay tuned!"
+    "comingSoonDescription": "From beginner basics to practical interpretation, this multilingual series will be published continuously."
   }
 }

@@ -5,7 +5,7 @@
   },
   "nav": {
     "products": "프로덕트",
-    "techBlog": "기술 블로그",
+    "techBlog": "사주 블로그",
     "about": "소개",
     "getStarted": "시작하기"
   },
@@ -18,9 +18,18 @@
     "cta": "사주920 체험하기",
     "ctaSecondary": "더 알아보기",
     "stats": {
-      "monthlyLaunch": { "value": "Monthly", "label": "신규 서비스 출시" },
-      "multiAI": { "value": "3+", "label": "AI 모델 통합" },
-      "global": { "value": "Global", "label": "한국어 · English" }
+      "monthlyLaunch": {
+        "value": "Monthly",
+        "label": "신규 서비스 출시"
+      },
+      "multiAI": {
+        "value": "3+",
+        "label": "AI 모델 통합"
+      },
+      "global": {
+        "value": "Global",
+        "label": "한국어 · English"
+      }
     }
   },
   "appHub": {
@@ -30,7 +39,8 @@
     "appStoreCta": "App Store (예정)",
     "playStoreCta": "Google Play (예정)",
     "storeNotice": "스토어 링크는 임시 주소입니다. 실제 출시 링크로 교체 예정입니다.",
-    "freeSajuCta": "무료 사주보기 사용하기"
+    "freeSajuCta": "무료 사주보기 사용하기",
+    "blogCta": "사주 블로그 보기"
   },
   "features": {
     "badge": "프로덕트",
@@ -86,12 +96,30 @@
     "badge": "기술 스택",
     "title": "NINE20을 구동하는 기술",
     "items": {
-      "flutter": { "name": "Flutter", "role": "크로스 플랫폼 앱" },
-      "fastapi": { "name": "FastAPI", "role": "고성능 백엔드" },
-      "python": { "name": "Python", "role": "AI/ML 엔진" },
-      "nextjs": { "name": "Next.js", "role": "웹 프론트엔드" },
-      "refine": { "name": "Refine", "role": "어드민 대시보드" },
-      "postgres": { "name": "PostgreSQL", "role": "데이터베이스" }
+      "flutter": {
+        "name": "Flutter",
+        "role": "크로스 플랫폼 앱"
+      },
+      "fastapi": {
+        "name": "FastAPI",
+        "role": "고성능 백엔드"
+      },
+      "python": {
+        "name": "Python",
+        "role": "AI/ML 엔진"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "role": "웹 프론트엔드"
+      },
+      "refine": {
+        "name": "Refine",
+        "role": "어드민 대시보드"
+      },
+      "postgres": {
+        "name": "PostgreSQL",
+        "role": "데이터베이스"
+      }
     }
   },
   "footer": {
@@ -101,7 +129,7 @@
     "pricing": "요금제",
     "company": "회사",
     "aboutUs": "회사 소개",
-    "techBlog": "기술 블로그",
+    "techBlog": "사주 블로그",
     "careers": "채용",
     "legal": "법적 고지",
     "privacy": "개인정보처리방침",
@@ -195,10 +223,10 @@
     }
   },
   "blog": {
-    "badge": "Tech Blog",
-    "title": "기술 블로그",
-    "description": "NINE20의 기술 이야기를 곧 공유합니다.",
+    "badge": "Saju Blog",
+    "title": "사주 블로그",
+    "description": "사주 공부와 해석 가이드를 공유합니다.",
     "comingSoon": "준비 중입니다",
-    "comingSoonDescription": "AI 기술, 개발 여정, 그리고 프로덕트 이야기를 담은 블로그를 준비하고 있습니다. 조금만 기다려 주세요!"
+    "comingSoonDescription": "사주 입문부터 실전 해석까지, 다국어 시리즈를 순차적으로 발행합니다."
   }
 }

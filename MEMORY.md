@@ -55,3 +55,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `src/app/[lang]/blog/page.tsx`, `src/app/[lang]/blog/[slug]/page.tsx`, `src/content/blog/sajuSeries.ts`, `src/content/blog/sajuSeries.test.ts`, `src/content/legal/saju920/privacy/index.ts`, `src/content/legal/saju920/privacy/{ja,zhCn,zhTw,es,fr}.tsx`, `MEMORY.md`
 - Verification: `npm test -- src/content/blog/sajuSeries.test.ts` passed, `npm test` passed, `npm run build` passed
 - Follow-up: Replace short-form blog detail copy with full multilingual long-form content per episode
+
+## 2026-02-18
+- Task: Expand blog discoverability and retire "Tech Blog" positioning
+- Decision: Use "Saju Blog" naming across locales, add home/header/footer blog entry points, and strengthen blog page metadata for SEO
+- Changed: `src/components/{Header,Footer,AppStoreHub,HomeBlogSection}.tsx`, `src/app/[lang]/{page.tsx,blog/page.tsx,blog/[slug]/page.tsx}`, `src/dictionaries/{ko,en,ja,zh-CN,zh-TW,es,fr}.json`, `src/lib/dictionaryKeys.test.ts`, `src/content/legal/saju920/privacy/fr.tsx`, static `docs/*`
+- Verification: `npm test -- src/lib/dictionaryKeys.test.ts` passed, `npm run lint` passed (1 existing warning), `npm test` passed, `npm run build` passed
+- Follow-up: Replace blog detail excerpt-only body with full multilingual long-form post content
