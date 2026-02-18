@@ -48,3 +48,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `docs/blog/saju-study-10/*`, `docs/blog/saju-study-10/templates/*`, `MEMORY.md`
 - Verification: Content/docs task; no runtime code impact. Existing tests remained passing from prior run (`npm test`).
 - Follow-up: Split language packs into per-post files when publishing in CMS
+
+## 2026-02-18
+- Task: Expose blog routes and remove legal privacy EN fallback
+- Decision: Replace blog redirect with localized list/detail pages and provide dedicated privacy policy content for ja/zh-CN/zh-TW/es/fr
+- Changed: `src/app/[lang]/blog/page.tsx`, `src/app/[lang]/blog/[slug]/page.tsx`, `src/content/blog/sajuSeries.ts`, `src/content/blog/sajuSeries.test.ts`, `src/content/legal/saju920/privacy/index.ts`, `src/content/legal/saju920/privacy/{ja,zhCn,zhTw,es,fr}.tsx`, `MEMORY.md`
+- Verification: `npm test -- src/content/blog/sajuSeries.test.ts` passed, `npm test` passed, `npm run build` passed
+- Follow-up: Replace short-form blog detail copy with full multilingual long-form content per episode

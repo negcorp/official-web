@@ -4,11 +4,11 @@ import type { ComponentType } from "react";
 const content: Record<Locale, () => Promise<{ default: ComponentType }>> = {
   ko: () => import("./ko"),
   en: () => import("./en"),
-  ja: () => import("./en"),
-  "zh-CN": () => import("./en"),
-  "zh-TW": () => import("./en"),
-  es: () => import("./en"),
-  fr: () => import("./en"),
+  ja: () => import("./ja"),
+  "zh-CN": () => import("./zhCn"),
+  "zh-TW": () => import("./zhTw"),
+  es: () => import("./es"),
+  fr: () => import("./fr"),
 };
 
 export const getSaju920PrivacyContent = async (locale: Locale) => {
