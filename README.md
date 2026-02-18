@@ -61,8 +61,8 @@ npm run lint
 무료 사주보기는 런타임에 백엔드를 직접 호출합니다.
 
 ```bash
-# optional (default: https://api.nine20.net)
-NEXT_PUBLIC_API_BASE_URL=https://api.nine20.net
+# optional (default: https://dev-api.nine20.net)
+NEXT_PUBLIC_API_BASE_URL=https://dev-api.nine20.net
 
 # optional store URLs
 NEXT_PUBLIC_APPSTORE_URL=https://apps.apple.com

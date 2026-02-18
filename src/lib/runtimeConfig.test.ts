@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { getPreferredStoreByUserAgent } from "@/lib/runtimeConfig";
+import {
+  getPreferredStoreByUserAgent,
+  getSajuApiBaseUrl,
+} from "@/lib/runtimeConfig";
 
 describe("getPreferredStoreByUserAgent", () => {
   it("returns playstore for android agents", () => {
@@ -19,5 +22,11 @@ describe("getPreferredStoreByUserAgent", () => {
   it("defaults to appstore for unknown agents", () => {
     const preferred = getPreferredStoreByUserAgent("Mozilla/5.0");
     expect(preferred).toBe("appstore");
+  });
+});
+
+describe("getSajuApiBaseUrl", () => {
+  it("uses dev api base by default", () => {
+    expect(getSajuApiBaseUrl()).toBe("https://dev-api.nine20.net");
   });
 });

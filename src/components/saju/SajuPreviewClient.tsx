@@ -10,6 +10,7 @@ import {
   requestSajuPreview,
   type SajuPreviewResponse,
 } from "@/lib/sajuPreviewApi";
+import { getSajuApiBaseUrl } from "@/lib/runtimeConfig";
 
 type AvailabilityStatus = "checking" | "available" | "unavailable";
 
@@ -24,12 +25,6 @@ type FormState = {
   birthHour: string;
   birthMinute: string;
 };
-
-const DEFAULT_API_BASE_URL = "https://api.nine20.net";
-
-function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_API_BASE_URL || DEFAULT_API_BASE_URL;
-}
 
 function formatPillar(name?: string, hanja?: string, fallback?: string) {
   if (!name && !hanja) {
@@ -68,7 +63,7 @@ export default function SajuPreviewClient({
 
   const refreshAvailability = useCallback(async () => {
     setStatus("checking");
-    const available = await checkSajuPreviewAvailability(getApiBaseUrl());
+    const available = await checkSajuPreviewAvailability(getSajuApiBaseUrl());
     setStatus(available ? "available" : "unavailable");
   }, []);
 
@@ -127,7 +122,7 @@ export default function SajuPreviewClient({
 
     try {
       const nextResult = await requestSajuPreview(
-        getApiBaseUrl(),
+        getSajuApiBaseUrl(),
         {
           birth_year: Number(form.birthYear),
           birth_month: Number(form.birthMonth),

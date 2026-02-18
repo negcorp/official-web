@@ -34,3 +34,17 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, `README.md`, `docs/skills/ai-ops-playbook/SKILL.md`, `MEMORY.md`
 - Verification: Doc-only change; no runtime behavior change
 - Follow-up: Keep these files synced when workflow changes
+
+## 2026-02-18
+- Task: Change free saju API default to dev environment
+- Decision: Set default base URL to `https://dev-api.nine20.net` while preserving `NEXT_PUBLIC_API_BASE_URL` override
+- Changed: `src/lib/runtimeConfig.ts`, `src/lib/runtimeConfig.test.ts`, `src/components/saju/SajuPreviewClient.tsx`, `README.md`
+- Verification: `npm test -- src/lib/runtimeConfig.test.ts` passed, `npm test` passed
+- Follow-up: Switch default to production API when rollout is complete
+
+## 2026-02-18
+- Task: Build multilingual 10-part saju blog draft pack
+- Decision: Deliver practical publish-ready drafts in 7 languages under docs, plus i18n JSON structure and CMS template
+- Changed: `docs/blog/saju-study-10/*`, `docs/blog/saju-study-10/templates/*`, `MEMORY.md`
+- Verification: Content/docs task; no runtime code impact. Existing tests remained passing from prior run (`npm test`).
+- Follow-up: Split language packs into per-post files when publishing in CMS
