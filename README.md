@@ -1,6 +1,6 @@
 # NINE20 Official Website
 
-NINE20(나인이공) 공식 웹사이트. AI 기반 사주/운세 플랫폼 **NINE20 Saju**의 랜딩 페이지로, 한국어와 영어를 지원합니다.
+NINE20(나인이공) 공식 웹사이트. AI 기반 서비스 플랫폼 **NINE20**의 랜딩 페이지이며, 다국어를 지원합니다.
 
 ## Tech Stack
 
@@ -11,7 +11,7 @@ NINE20(나인이공) 공식 웹사이트. AI 기반 사주/운세 플랫폼 **NI
 | Styling | Tailwind CSS v4 |
 | Animation | Framer Motion 12 |
 | Icons | Lucide React |
-| i18n | Dictionary 패턴 (ko/en) |
+| i18n | Dictionary 패턴 (ko, en, ja, zh-CN, zh-TW, es, fr) |
 | Runtime | Node.js 24+, React 19 |
 
 ## Getting Started
@@ -41,6 +41,20 @@ npm run lint
 ```
 
 개발 서버 실행 후 `http://localhost:3000` 접속 시 기본 로케일(`/ko`)로 이동합니다.
+
+## AI 협업 운영 가이드
+
+- 운영 기준 문서: `AGENTS.md` (최우선)
+- 에이전트 보조 규칙: `CLAUDE.md`, `.cursorrules`
+- 작업 메모리 로그: `MEMORY.md` (작업 단위로 1개 항목 추가)
+- 재사용 워크플로우 스킬: `docs/skills/ai-ops-playbook/SKILL.md`
+
+모든 작업은 다음 순서를 따릅니다.
+1. 구현 범위 확인
+2. 코드 변경
+3. 검증(`npm test`, 필요 시 `npm run build`)
+4. 문서 동기화
+5. `MEMORY.md` 업데이트
 
 ### API 설정
 
@@ -72,12 +86,17 @@ official-web/
 │
 └── src/
     ├── lib/
-    │   ├── i18n.ts                # 로케일 설정 (ko, en)
+    │   ├── i18n.ts                # 로케일 설정
     │   └── getDictionary.ts       # 사전 로더 유틸리티
     │
     ├── dictionaries/
     │   ├── ko.json                # 한국어 번역 파일
-    │   └── en.json                # 영어 번역 파일
+    │   ├── en.json                # 영어 번역 파일
+    │   ├── ja.json                # 일본어 번역 파일
+    │   ├── zh-CN.json             # 중국어(간체) 번역 파일
+    │   ├── zh-TW.json             # 중국어(번체) 번역 파일
+    │   ├── es.json                # 스페인어 번역 파일
+    │   └── fr.json                # 프랑스어 번역 파일
     │
     ├── components/
     │   ├── Header.tsx             # 네비게이션 + Language Switcher
@@ -111,9 +130,14 @@ official-web/
 2. `app/[lang]/layout.tsx`에서 URL의 `lang` 파라미터를 읽어 사전 로드
 3. 모든 컴포넌트는 `dict` prop을 통해 번역된 텍스트를 렌더링
 
+### 현재 지원 로케일
+
+- `ko`, `en`, `ja`, `zh-CN`, `zh-TW`, `es`, `fr`
+- `zh` 경로는 `zh-CN`으로 매핑됩니다.
+
 ### 번역 텍스트 수정
 
-`src/dictionaries/ko.json` 또는 `en.json`의 값을 수정하면 됩니다.
+`src/dictionaries/*.json`에서 해당 언어 파일을 수정하면 됩니다.
 
 ```json
 {
@@ -144,7 +168,7 @@ official-web/
    };
    ```
 
-별도 빌드 설정 없이 위 3단계만 거치면 자동으로 `/ja` 경로가 활성화됩니다.
+4. 로케일 경로/메타데이터 변경이 있으면 `npm run build`로 정적 출력까지 확인합니다.
 
 ## 디자인 테마
 
@@ -185,7 +209,7 @@ Tailwind v4의 `@theme inline` 블록으로 `src/app/globals.css`에서 관리�
 ### 새 섹션 추가
 
 1. `src/components/NewSection.tsx` 생성
-2. 필요한 텍스트를 `ko.json`, `en.json`에 추가
+2. 필요한 텍스트를 모든 지원 로케일 사전에 추가
 3. `app/[lang]/page.tsx`에서 import & 배치:
    ```tsx
    import NewSection from "@/components/NewSection";
