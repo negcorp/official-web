@@ -4,7 +4,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getDictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
-import { getSajuSeriesPostBySlug, getSajuSeriesPosts } from "@/content/blog/sajuSeries";
+import {
+  getSajuSeriesPostBySlug,
+  getSajuSeriesPosts,
+  getSajuSeriesPostDetailBySlug,
+} from "@/content/blog/sajuSeries";
 
 export async function generateMetadata({
   params,
@@ -51,7 +55,7 @@ export default async function BlogDetailPage({
   const { lang: rawLang, slug } = await params;
   const lang = rawLang as Locale;
   const dict = await getDictionary(lang);
-  const post = getSajuSeriesPostBySlug(lang, slug);
+  const post = getSajuSeriesPostDetailBySlug(lang, slug);
 
   if (!post) {
     notFound();
@@ -82,6 +86,27 @@ export default async function BlogDetailPage({
           />
           <h1 className="mt-2 text-3xl font-bold text-text-primary sm:text-4xl">{post.title}</h1>
           <p className="mt-4 text-base leading-relaxed text-text-secondary">{post.excerpt}</p>
+
+          <p className="mt-8 text-base leading-relaxed text-text-secondary">{post.body.intro}</p>
+
+          <div className="mt-8 space-y-8">
+            {post.body.sections.map((section) => (
+              <section key={section.heading}>
+                <h2 className="text-xl font-semibold text-text-primary">{section.heading}</h2>
+                <div className="mt-3 space-y-3">
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-base leading-relaxed text-text-secondary">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <p className="mt-10 rounded-xl border border-border bg-surface-light/30 p-4 text-sm leading-relaxed text-text-secondary">
+            {post.body.outro}
+          </p>
         </article>
       </main>
       <Footer dict={dict} lang={lang} />

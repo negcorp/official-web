@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getDictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
+import { getSajuTermsContent } from "@/content/legal/saju920/terms";
 
 export default async function Saju920TermsPage({
   params,
@@ -12,6 +13,7 @@ export default async function Saju920TermsPage({
   const lang = rawLang as Locale;
   const dict = await getDictionary(lang);
   const termsDict = dict.legal.saju920Terms;
+  const termsContent = getSajuTermsContent(lang);
 
   return (
     <>
@@ -30,6 +32,25 @@ export default async function Saju920TermsPage({
             </p>
             <p className="mt-6 text-xs text-text-muted">
               {termsDict.lastUpdatedLabel}: {termsDict.lastUpdated}
+            </p>
+
+            <div className="mt-8 space-y-8 border-t border-border/70 pt-6">
+              {termsContent.sections.map((section) => (
+                <section key={section.title}>
+                  <h2 className="text-lg font-semibold text-text-primary">{section.title}</h2>
+                  <div className="mt-3 space-y-3">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-sm leading-relaxed text-text-secondary">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+
+            <p className="mt-8 text-xs text-text-muted">
+              Effective Date: {termsContent.effectiveDate}
             </p>
           </div>
         </div>

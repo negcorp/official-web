@@ -7,6 +7,21 @@ export type SajuSeriesPost = {
   excerpt: Record<Locale, string>;
 };
 
+export type SajuSeriesPostDetail = {
+  no: number;
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: {
+    intro: string;
+    sections: Array<{
+      heading: string;
+      paragraphs: string[];
+    }>;
+    outro: string;
+  };
+};
+
 const posts: SajuSeriesPost[] = [
   {
     no: 1,
@@ -249,5 +264,267 @@ export function getSajuSeriesPostBySlug(lang: Locale, slug: string) {
     slug: post.slug,
     title: post.title[lang],
     excerpt: post.excerpt[lang],
+  };
+}
+
+function getSectionHeadings(lang: Locale) {
+  switch (lang) {
+    case "ko":
+      return ["핵심 개념", "실전 적용", "주의할 점"];
+    case "en":
+      return ["Core Concept", "Practical Use", "Common Mistakes"];
+    case "ja":
+      return ["核心ポイント", "実践での使い方", "よくある注意点"];
+    case "zh-CN":
+      return ["核心概念", "实战应用", "常见误区"];
+    case "zh-TW":
+      return ["核心概念", "實戰應用", "常見誤區"];
+    case "es":
+      return ["Concepto clave", "Aplicación práctica", "Errores comunes"];
+    case "fr":
+      return ["Concept clé", "Application pratique", "Erreurs fréquentes"];
+  }
+}
+
+function getSeriesOutro(lang: Locale, no: number) {
+  const nextNo = Math.min(no + 1, 10);
+  switch (lang) {
+    case "ko":
+      return `다음 편(${nextNo}편)에서는 이 내용을 바탕으로 바로 적용할 수 있는 체크리스트를 다룹니다.`;
+    case "en":
+      return `In episode ${nextNo}, we build on this with a practical checklist you can apply immediately.`;
+    case "ja":
+      return `次回（第${nextNo}回）では、この内容をすぐ実践できるチェックリストとして整理します。`;
+    case "zh-CN":
+      return `下一篇（第${nextNo}篇）将基于这些内容给出可立即执行的检查清单。`;
+    case "zh-TW":
+      return `下一篇（第${nextNo}篇）將以此為基礎提供可立即執行的檢查清單。`;
+    case "es":
+      return `En el episodio ${nextNo}, convertiremos esto en una checklist aplicable de inmediato.`;
+    case "fr":
+      return `Dans l'épisode ${nextNo}, nous transformerons cela en checklist immédiatement applicable.`;
+  }
+}
+
+function buildPostBody(lang: Locale, post: SajuSeriesPost) {
+  const localizedTitle = post.title[lang];
+  const localizedExcerpt = post.excerpt[lang];
+  const headings = getSectionHeadings(lang);
+
+  switch (lang) {
+    case "ko":
+      return {
+        intro: `${localizedExcerpt} 이 글은 ${localizedTitle} 주제를 초보 관점에서 단계적으로 이해할 수 있도록 구성했습니다.`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `${localizedTitle}를 볼 때는 단일 키워드보다 흐름을 먼저 파악해야 해석의 정확도가 올라갑니다.`,
+              "용어를 외우기보다 입력값과 결과의 연결 관계를 이해하면 실전에서 더 안정적으로 읽을 수 있습니다.",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "실제 해석에서는 현재 생활 패턴, 관계, 업무 맥락을 함께 적어두고 결과를 대조해보는 방식이 효과적입니다.",
+              "한 번에 결론을 내리기보다 2주 단위로 기록하고 비교하면 자신에게 맞는 해석 기준이 빠르게 잡힙니다.",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "하나의 문장으로 사람을 단정하거나 불안을 유도하는 해석은 피하고, 선택 가능한 행동 옵션으로 바꾸는 것이 중요합니다.",
+              "사주는 결정이 아니라 참고 프레임으로 활용할 때 가장 높은 실용성을 가집니다.",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+    case "en":
+      return {
+        intro: `${localizedExcerpt} This article explains ${localizedTitle} in a beginner-friendly, step-by-step way.`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `When reading ${localizedTitle}, focus on pattern and context before jumping to isolated keywords.`,
+              "Understanding how inputs connect to interpretation usually matters more than memorizing terminology.",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "In practice, compare your reading with your real routine, relationships, and work context.",
+              "Tracking notes over two to four weeks gives a more reliable interpretation baseline than one-time judgment.",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "Avoid deterministic conclusions from one phrase; translate insights into actionable options.",
+              "Saju works best as a decision-support frame, not as fixed destiny.",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+    case "ja":
+      return {
+        intro: `${localizedExcerpt} 本記事では「${localizedTitle}」を初心者向けに段階的に整理します。`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `${localizedTitle}を読むときは、単語単位より全体の流れを先に押さえることが重要です。`,
+              "用語暗記より、入力値と解釈結果のつながりを理解する方が実践で役立ちます。",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "実際には、生活習慣・人間関係・仕事の状況と照合しながら読むと精度が上がります。",
+              "1回で断定せず、2〜4週間の記録で比較する方法を推奨します。",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "一つの表現で性質を断定したり、不安を煽る解釈は避けるべきです。",
+              "四柱推命は決定論ではなく、意思決定を補助するフレームとして使うのが実用的です。",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+    case "zh-CN":
+      return {
+        intro: `${localizedExcerpt} 本文会以新手友好的方式分步骤讲清“${localizedTitle}”。`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `阅读${localizedTitle}时，先看整体结构与上下文，再看单个关键词。`,
+              "与其背术语，不如先理解输入信息如何影响解读结果。",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "实战中建议把解读与当前生活、关系、工作场景一起对照。",
+              "不要一次下结论，连续记录2到4周会更容易形成稳定判断。",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "避免用一句话给人贴标签，也不要把解读变成焦虑来源。",
+              "把八字当作决策参考框架，而不是绝对结论，效果会更好。",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+    case "zh-TW":
+      return {
+        intro: `${localizedExcerpt} 本文會以新手可理解的方式，逐步說明「${localizedTitle}」。`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `閱讀${localizedTitle}時，先看整體脈絡，再看個別關鍵詞。`,
+              "與其硬背術語，不如先理解輸入資訊如何影響解讀結果。",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "實作時，建議把解讀與當前生活、關係、工作情境交叉對照。",
+              "不要一次定論，持續記錄2到4週更容易建立穩定判斷。",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "避免用單一句子替人定性，也不要讓解讀成為焦慮來源。",
+              "把四柱當作決策參考框架，而非絕對答案，會更實用。",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+    case "es":
+      return {
+        intro: `${localizedExcerpt} En este artículo explicamos "${localizedTitle}" en pasos simples para principiantes.`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `Al leer ${localizedTitle}, conviene entender primero el patrón general y el contexto.`,
+              "Más útil que memorizar términos es comprender cómo los datos de entrada cambian la interpretación.",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "En la práctica, compara la lectura con tu rutina real, relaciones y situación laboral.",
+              "Evita conclusiones de una sola vez: registrar durante 2 a 4 semanas mejora la consistencia.",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "No conviertas una frase en etiqueta permanente ni en fuente de ansiedad.",
+              "El saju funciona mejor como marco de apoyo para decidir, no como destino fijo.",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+    case "fr":
+      return {
+        intro: `${localizedExcerpt} Cet article présente "${localizedTitle}" étape par étape pour les débutants.`,
+        sections: [
+          {
+            heading: headings[0],
+            paragraphs: [
+              `Pour lire ${localizedTitle}, commencez par le contexte global avant les mots-clés isolés.`,
+              "Comprendre le lien entre données d'entrée et résultat d'interprétation est plus utile que mémoriser des termes.",
+            ],
+          },
+          {
+            heading: headings[1],
+            paragraphs: [
+              "En pratique, comparez la lecture avec votre routine, vos relations et votre situation professionnelle.",
+              "Évitez le verdict immédiat: un suivi sur 2 à 4 semaines donne une base plus fiable.",
+            ],
+          },
+          {
+            heading: headings[2],
+            paragraphs: [
+              "N'enfermez pas une personne dans une phrase unique et évitez les lectures anxiogènes.",
+              "Le saju est le plus utile comme cadre d'aide à la décision, pas comme fatalité.",
+            ],
+          },
+        ],
+        outro: getSeriesOutro(lang, post.no),
+      };
+  }
+}
+
+export function getSajuSeriesPostDetailBySlug(
+  lang: Locale,
+  slug: string
+): SajuSeriesPostDetail | null {
+  const post = posts.find((item) => item.slug === slug);
+  if (!post) {
+    return null;
+  }
+
+  return {
+    no: post.no,
+    slug: post.slug,
+    title: post.title[lang],
+    excerpt: post.excerpt[lang],
+    body: buildPostBody(lang, post),
   };
 }

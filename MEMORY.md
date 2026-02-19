@@ -62,3 +62,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `src/components/{Header,Footer,AppStoreHub,HomeBlogSection}.tsx`, `src/app/[lang]/{page.tsx,blog/page.tsx,blog/[slug]/page.tsx}`, `src/dictionaries/{ko,en,ja,zh-CN,zh-TW,es,fr}.json`, `src/lib/dictionaryKeys.test.ts`, `src/content/legal/saju920/privacy/fr.tsx`, static `docs/*`
 - Verification: `npm test -- src/lib/dictionaryKeys.test.ts` passed, `npm run lint` passed (1 existing warning), `npm test` passed, `npm run build` passed
 - Follow-up: Replace blog detail excerpt-only body with full multilingual long-form post content
+
+## 2026-02-19
+- Task: Fill missing on-page content for blog detail and terms
+- Decision: Keep multilingual support and generate practical long-form body blocks in-app instead of excerpt-only rendering
+- Changed: `src/content/blog/sajuSeries.ts`, `src/content/blog/sajuSeries.test.ts`, `src/app/[lang]/blog/[slug]/page.tsx`, `src/content/legal/saju920/terms.ts`, `src/app/[lang]/legal/saju/terms/page.tsx`, `src/dictionaries/{ko,en,ja,zh-CN,zh-TW,es,fr}.json`, static `docs/*`
+- Verification: `npm test -- src/content/blog/sajuSeries.test.ts` passed, `npm run lint` passed (1 existing warning), `npm test` passed, `npm run build` passed
+- Follow-up: Replace generated blog body paragraphs with finalized editorial copy per locale
