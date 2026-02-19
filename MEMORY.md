@@ -69,3 +69,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `src/content/blog/sajuSeries.ts`, `src/content/blog/sajuSeries.test.ts`, `src/app/[lang]/blog/[slug]/page.tsx`, `src/content/legal/saju920/terms.ts`, `src/app/[lang]/legal/saju/terms/page.tsx`, `src/dictionaries/{ko,en,ja,zh-CN,zh-TW,es,fr}.json`, static `docs/*`
 - Verification: `npm test -- src/content/blog/sajuSeries.test.ts` passed, `npm run lint` passed (1 existing warning), `npm test` passed, `npm run build` passed
 - Follow-up: Replace generated blog body paragraphs with finalized editorial copy per locale
+
+## 2026-02-19
+- Task: Add previous/next navigation to blog detail pages
+- Decision: Compute adjacent posts by series order and render localized prev/next cards at article bottom
+- Changed: `src/content/blog/sajuSeries.ts`, `src/content/blog/sajuSeries.test.ts`, `src/app/[lang]/blog/[slug]/page.tsx`, static `docs/*`
+- Verification: `npm test -- src/content/blog/sajuSeries.test.ts` passed, `npm run lint` passed (1 existing warning), `npm run build` passed
+- Follow-up: Consider adding keyboard shortcuts and top-level series index nav for long reading flows

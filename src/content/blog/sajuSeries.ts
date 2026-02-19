@@ -528,3 +528,30 @@ export function getSajuSeriesPostDetailBySlug(
     body: buildPostBody(lang, post),
   };
 }
+
+export function getSajuSeriesAdjacentPosts(lang: Locale, slug: string) {
+  const index = posts.findIndex((item) => item.slug === slug);
+  if (index === -1) {
+    return null;
+  }
+
+  const prev = index > 0 ? posts[index - 1] : null;
+  const next = index < posts.length - 1 ? posts[index + 1] : null;
+
+  return {
+    prev: prev
+      ? {
+          slug: prev.slug,
+          title: prev.title[lang],
+          no: prev.no,
+        }
+      : null,
+    next: next
+      ? {
+          slug: next.slug,
+          title: next.title[lang],
+          no: next.no,
+        }
+      : null,
+  };
+}
