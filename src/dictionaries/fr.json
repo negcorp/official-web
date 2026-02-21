@@ -160,6 +160,14 @@
       "description": "Conditions de base pour utiliser le service Saju920.",
       "lastUpdatedLabel": "Dernière mise à jour",
       "lastUpdated": "2026-02-13"
+    },
+    "saju920AccountDeletion": {
+      "badge": "Politique de suppression de compte",
+      "title": "Politique de suppression de compte Saju920",
+      "description": "Guide sur la demande de suppression de compte via l'application ou e-mail et le traitement des données.",
+      "lastUpdatedLabel": "Dernière mise à jour",
+      "lastUpdated": "2026-02-21",
+      "effectiveDateLabel": "Date d'entrée en vigueur"
     }
   },
   "sajuPreview": {

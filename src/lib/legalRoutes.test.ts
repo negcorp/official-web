@@ -9,4 +9,10 @@ describe("getLegalPath", () => {
   it("builds saju terms path", () => {
     expect(getLegalPath("en", "terms")).toBe("/en/legal/saju/terms");
   });
+
+  it("builds saju account deletion path", () => {
+    expect(getLegalPath("ja", "account-deletion")).toBe(
+      "/ja/legal/saju/account-deletion"
+    );
+  });
 });

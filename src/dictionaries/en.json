@@ -160,6 +160,14 @@
       "description": "Core terms for using the Saju920 service.",
       "lastUpdatedLabel": "Last Updated",
       "lastUpdated": "2026-02-13"
+    },
+    "saju920AccountDeletion": {
+      "badge": "Account Deletion Policy",
+      "title": "Saju920 Account Deletion Policy",
+      "description": "How to request account deletion and how related data is processed.",
+      "lastUpdatedLabel": "Last Updated",
+      "lastUpdated": "2026-02-21",
+      "effectiveDateLabel": "Effective Date"
     }
   },
   "sajuPreview": {

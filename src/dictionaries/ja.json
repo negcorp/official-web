@@ -160,6 +160,14 @@
       "description": "Saju920サービス利用の基本条件です。",
       "lastUpdatedLabel": "最終更新日",
       "lastUpdated": "2026-02-13"
+    },
+    "saju920AccountDeletion": {
+      "badge": "アカウント削除ポリシー",
+      "title": "Saju920 アカウント削除ポリシー",
+      "description": "アカウント削除の申請方法と削除時のデータ処理基準を案内します。",
+      "lastUpdatedLabel": "最終更新日",
+      "lastUpdated": "2026-02-21",
+      "effectiveDateLabel": "施行日"
     }
   },
   "sajuPreview": {

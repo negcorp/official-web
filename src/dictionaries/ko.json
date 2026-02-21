@@ -160,6 +160,14 @@
       "description": "사주920 서비스 이용을 위한 기본 약관입니다.",
       "lastUpdatedLabel": "최종 수정일",
       "lastUpdated": "2026-02-13"
+    },
+    "saju920AccountDeletion": {
+      "badge": "계정 삭제 정책",
+      "title": "사주920 계정 삭제 정책",
+      "description": "앱 및 이메일을 통한 계정 삭제 요청 방법과 데이터 처리 기준을 안내합니다.",
+      "lastUpdatedLabel": "최종 수정일",
+      "lastUpdated": "2026-02-21",
+      "effectiveDateLabel": "시행일"
     }
   },
   "sajuPreview": {

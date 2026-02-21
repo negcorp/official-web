@@ -160,6 +160,14 @@
       "description": "Saju920 服務使用的基本條款。",
       "lastUpdatedLabel": "最後更新",
       "lastUpdated": "2026-02-13"
+    },
+    "saju920AccountDeletion": {
+      "badge": "帳號刪除政策",
+      "title": "Saju920 帳號刪除政策",
+      "description": "說明帳號刪除申請方式與相關資料處理標準。",
+      "lastUpdatedLabel": "最後更新",
+      "lastUpdated": "2026-02-21",
+      "effectiveDateLabel": "生效日期"
     }
   },
   "sajuPreview": {

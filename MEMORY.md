@@ -118,3 +118,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `src/components/saju/SajuPreviewClient.tsx`, `src/lib/sajuPreviewApi.ts`, `src/lib/sajuPreviewApi.test.ts`, `README.md`, `CLAUDE.md`, `.cursorrules`, `docs/plans/2026-02-21-saju-preview-root-health-check.md`, `MEMORY.md`
 - Verification: `npm test` passed, `npm run build` passed
 - Follow-up: If backend provides a dedicated `/health` contract for this feature, migrate availability check to that endpoint
+
+## 2026-02-21
+- Task: Add multilingual account deletion policy route and locale-less fallback
+- Decision: Serve account deletion policy at `/{lang}/legal/saju/account-deletion` for all supported locales and redirect `/legal/saju/account-deletion` to `/ko/legal/saju/account-deletion` (`/zh/*` aliases remain mapped to `zh-CN`)
+- Changed: `docs/plans/2026-02-21-account-deletion-policy-route.md`, `src/app/[lang]/legal/saju/account-deletion/page.tsx`, `src/app/legal/saju/account-deletion/page.tsx`, `src/app/zh/legal/saju/account-deletion/page.tsx`, `src/content/legal/saju920/accountDeletion.ts`, `src/dictionaries/{ko,en,ja,zh-CN,zh-TW,es,fr}.json`, `src/lib/legalRoutes.ts`, `src/lib/legalRoutes.test.ts`, `README.md`, `CLAUDE.md`, `.cursorrules`, `docs/**`, `MEMORY.md`
+- Verification: `npm test` passed, `npm run build` passed
+- Follow-up: If mobile app policy links need locale-specific landing behavior, add a resolver endpoint that maps app locale to `/{lang}/legal/saju/account-deletion`

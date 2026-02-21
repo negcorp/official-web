@@ -7,6 +7,8 @@ Follow `AGENTS.md` first. This file is a concise implementation companion.
 NINE20 is an AI accessibility startup. The fortune service is the first product, not the only product narrative.
 - Free saju preview defaults to `https://api.nine20.net` unless `NEXT_PUBLIC_API_BASE_URL` is set.
 - Saju preview timezone/birthplace selector should use server presets from `/api/v1/saju/birthplace-presets`.
+- Legal pages include `privacy`, `terms`, and `account-deletion` under `/{lang}/legal/saju/*`.
+- Locale-less app link `/legal/saju/account-deletion` should redirect to `/ko/legal/saju/account-deletion`.
 
 ## Stack
 - Next.js 16 (App Router, Turbopack)

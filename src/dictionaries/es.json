@@ -160,6 +160,14 @@
       "description": "Términos básicos para usar el servicio Saju920.",
       "lastUpdatedLabel": "Última actualización",
       "lastUpdated": "2026-02-13"
+    },
+    "saju920AccountDeletion": {
+      "badge": "Política de eliminación de cuenta",
+      "title": "Política de eliminación de cuenta de Saju920",
+      "description": "Guía sobre cómo solicitar la eliminación de cuenta por app o correo y cómo se tratan los datos.",
+      "lastUpdatedLabel": "Última actualización",
+      "lastUpdated": "2026-02-21",
+      "effectiveDateLabel": "Fecha de entrada en vigor"
     }
   },
   "sajuPreview": {

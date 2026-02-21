@@ -121,8 +121,19 @@ official-web/
             ├── blog/page.tsx
             └── legal/saju/
                 ├── privacy/page.tsx
-                └── terms/page.tsx
+                ├── terms/page.tsx
+                └── account-deletion/page.tsx
 ```
+
+### 법적 고지 URL
+
+- 다국어 경로:
+  - `/{lang}/legal/saju/privacy`
+  - `/{lang}/legal/saju/terms`
+  - `/{lang}/legal/saju/account-deletion`
+- 별칭/기본 경로:
+  - `/zh/legal/saju/*` -> `/zh-CN/legal/saju/*` 리다이렉트
+  - `/legal/saju/account-deletion` -> `/ko/legal/saju/account-deletion` 리다이렉트
 
 ## i18n (국제화) 운영 가이드
 
