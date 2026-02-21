@@ -40,7 +40,7 @@ npm start
 npm run lint
 ```
 
-개발 서버 실행 후 `http://localhost:3000` 접속 시 기본 로케일(`/ko`)로 이동합니다.
+개발 서버 실행 후 `http://localhost:3000` 접속 시 기본 로케일(`/en`)로 이동합니다.
 
 ## AI 협업 운영 가이드
 
@@ -111,7 +111,7 @@ official-web/
     └── app/
         ├── globals.css            # Tailwind v4 테마 (컬러, 유틸리티)
         ├── layout.tsx             # 루트 레이아웃 (패스스루)
-        ├── page.tsx               # / → /ko 리다이렉트
+        ├── page.tsx               # / → /en 리다이렉트
         │
         └── [lang]/
             ├── layout.tsx         # 언어별 레이아웃 (메타데이터, 폰트)
@@ -133,13 +133,13 @@ official-web/
   - `/{lang}/legal/saju/account-deletion`
 - 별칭/기본 경로:
   - `/zh/legal/saju/*` -> `/zh-CN/legal/saju/*` 리다이렉트
-  - `/legal/saju/account-deletion` -> `/ko/legal/saju/account-deletion` 리다이렉트
+  - `/legal/saju/account-deletion` -> `/en/legal/saju/account-deletion` 리다이렉트
 
 ## i18n (국제화) 운영 가이드
 
 ### 작동 방식
 
-1. 사용자가 `/`에 접속하면 `app/page.tsx`가 기본 로케일(`ko`)로 리다이렉트
+1. 사용자가 `/`에 접속하면 `app/page.tsx`가 기본 로케일(`en`)로 리다이렉트
 2. `app/[lang]/layout.tsx`에서 URL의 `lang` 파라미터를 읽어 사전 로드
 3. 모든 컴포넌트는 `dict` prop을 통해 번역된 텍스트를 렌더링
 
@@ -165,7 +165,7 @@ official-web/
 1. `src/lib/i18n.ts`의 `locales` 배열에 새 로케일 코드 추가:
    ```ts
    export const i18n = {
-     defaultLocale: "ko",
+     defaultLocale: "en",
      locales: ["ko", "en", "ja"],  // 일본어 추가
    } as const;
    ```
@@ -239,7 +239,7 @@ Tailwind v4의 `@theme inline` 블록으로 `src/app/globals.css`에서 관리�
 
 ## 새 페이지 추가
 
-예시: `/ko/about` 페이지
+예시: `/en/about` 페이지
 
 1. `src/app/[lang]/about/page.tsx` 생성:
    ```tsx

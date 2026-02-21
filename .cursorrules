@@ -21,7 +21,8 @@
 - Prefer small patches and explicit file references
 - Free saju API default is `https://api.nine20.net`; keep env override via `NEXT_PUBLIC_API_BASE_URL`
 - For free saju form, use server-driven birthplace presets (`/api/v1/saju/birthplace-presets`) instead of manual timezone text input.
-- Legal routes for saju should include `/{lang}/legal/saju/account-deletion` with locale-less fallback `/legal/saju/account-deletion` redirecting to `/ko/legal/saju/account-deletion`.
+- Default locale is `en`.
+- Legal routes for saju should include `/{lang}/legal/saju/account-deletion` with locale-less fallback `/legal/saju/account-deletion` redirecting to `/en/legal/saju/account-deletion`.
 
 ## Required Verification
 - `npm test`

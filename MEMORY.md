@@ -125,3 +125,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `docs/plans/2026-02-21-account-deletion-policy-route.md`, `src/app/[lang]/legal/saju/account-deletion/page.tsx`, `src/app/legal/saju/account-deletion/page.tsx`, `src/app/zh/legal/saju/account-deletion/page.tsx`, `src/content/legal/saju920/accountDeletion.ts`, `src/dictionaries/{ko,en,ja,zh-CN,zh-TW,es,fr}.json`, `src/lib/legalRoutes.ts`, `src/lib/legalRoutes.test.ts`, `README.md`, `CLAUDE.md`, `.cursorrules`, `docs/**`, `MEMORY.md`
 - Verification: `npm test` passed, `npm run build` passed
 - Follow-up: If mobile app policy links need locale-specific landing behavior, add a resolver endpoint that maps app locale to `/{lang}/legal/saju/account-deletion`
+
+## 2026-02-21
+- Task: Switch default locale fallback to English
+- Decision: Set `en` as the single default locale for locale-less entry points, including root (`/`) and `/legal/saju/account-deletion`
+- Changed: `docs/plans/2026-02-21-default-locale-en.md`, `src/lib/i18n.ts`, `src/lib/i18n.test.ts`, `src/app/legal/saju/account-deletion/page.tsx`, `README.md`, `CLAUDE.md`, `.cursorrules`, `docs/**`, `MEMORY.md`
+- Verification: `npm test` passed, `npm run build` passed
+- Follow-up: If needed, adjust language selector order to surface `en` first in UI menus

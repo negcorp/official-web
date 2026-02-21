@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { i18n, isSupportedLocale, normalizeLocale } from "./i18n";
 
 describe("i18n locale support", () => {
+  it("uses english as default locale", () => {
+    expect(i18n.defaultLocale).toBe("en");
+  });
+
   it("includes expanded locale list", () => {
     expect(i18n.locales).toEqual([
       "ko",
