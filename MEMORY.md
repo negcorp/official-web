@@ -97,3 +97,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `.gitignore`, `MEMORY.md`
 - Verification: `git check-ignore -v .npm-cache/.keep` matched `.gitignore`, `npm test` passed
 - Follow-up: None
+
+## 2026-02-21
+- Task: Switch saju preview availability check from OpenAPI to root health
+- Decision: Replace `/openapi.json` path introspection with API root (`GET /`) health response check for preflight availability
+- Changed: `docs/plans/2026-02-21-saju-preview-root-health-check.md`, `src/lib/sajuPreviewApi.ts`, `src/lib/sajuPreviewApi.test.ts`, `README.md`, `MEMORY.md`
+- Verification: `npm test` passed
+- Follow-up: Consider introducing explicit `/health` endpoint in backend for stronger readiness semantics

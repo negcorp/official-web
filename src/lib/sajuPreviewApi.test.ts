@@ -22,12 +22,11 @@ afterEach(() => {
 });
 
 describe("checkSajuPreviewAvailability", () => {
-  it("returns true when preview path exists", async () => {
+  it("returns true when root health responds with ok", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue({
         ok: true,
-        json: async () => ({ paths: { "/api/v1/saju/preview": {} } }),
       })
     );
 
@@ -35,15 +34,22 @@ describe("checkSajuPreviewAvailability", () => {
     expect(available).toBe(true);
   });
 
-  it("returns false when openapi payload is invalid json", async () => {
+  it("returns false when root health responds with non-ok", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => {
-          throw new Error("invalid json");
-        },
+        ok: false,
       })
+    );
+
+    const available = await checkSajuPreviewAvailability(API_BASE);
+    expect(available).toBe(false);
+  });
+
+  it("returns false on network errors", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockRejectedValue(new Error("network down"))
     );
 
     const available = await checkSajuPreviewAvailability(API_BASE);

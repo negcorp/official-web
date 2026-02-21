@@ -70,30 +70,15 @@ function buildUrl(baseUrl: string, path: string) {
 export async function checkSajuPreviewAvailability(
   baseUrl: string
 ): Promise<boolean> {
-  let response: Response;
   try {
-    response = await fetch(buildUrl(baseUrl, "/openapi.json"), {
+    const response = await fetch(buildUrl(baseUrl, "/"), {
       method: "GET",
       cache: "no-store",
     });
+    return response.ok;
   } catch {
     return false;
   }
-
-  if (!response.ok) {
-    return false;
-  }
-
-  let data: { paths?: Record<string, unknown> };
-  try {
-    data = (await response.json()) as {
-      paths?: Record<string, unknown>;
-    };
-  } catch {
-    return false;
-  }
-
-  return Boolean(data.paths?.["/api/v1/saju/preview"]);
 }
 
 export async function requestSajuPreview(

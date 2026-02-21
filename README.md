@@ -59,6 +59,7 @@ npm run lint
 ### API 설정
 
 무료 사주보기는 런타임에 백엔드를 직접 호출합니다.
+사전 가용성 체크는 `NEXT_PUBLIC_API_BASE_URL`의 루트(`GET /`) 응답 성공 여부를 기준으로 수행합니다.
 
 ```bash
 # optional (default: https://api.nine20.net)
