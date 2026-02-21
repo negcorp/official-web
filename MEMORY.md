@@ -104,3 +104,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `docs/plans/2026-02-21-saju-preview-root-health-check.md`, `src/lib/sajuPreviewApi.ts`, `src/lib/sajuPreviewApi.test.ts`, `README.md`, `MEMORY.md`
 - Verification: `npm test` passed
 - Follow-up: Consider introducing explicit `/health` endpoint in backend for stronger readiness semantics
+
+## 2026-02-21
+- Task: Regenerate deployment docs output after root health-check change
+- Decision: Rebuild static export in `docs` so deployment bundle reflects root-based availability check logic; restore non-build docs paths kept in repository (`docs/CNAME`, `docs/blog/saju-study-10/*`, `docs/plans/*`, `docs/skills/*`)
+- Changed: `docs/**`, `MEMORY.md`
+- Verification: `npm run build` passed, `npm test` passed, `rg -n "openapi\\.json" docs/_next/static/chunks -S` returned no matches
+- Follow-up: Consider moving non-build documents outside `docs/` to avoid restore steps on each export
