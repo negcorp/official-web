@@ -19,6 +19,7 @@
 - Next.js 16 async params for `[lang]`
 - Keep Tailwind v4 tokens in `src/app/globals.css`
 - Prefer small patches and explicit file references
+- Free saju API default is `https://api.nine20.net`; keep env override via `NEXT_PUBLIC_API_BASE_URL`
 
 ## Required Verification
 - `npm test`

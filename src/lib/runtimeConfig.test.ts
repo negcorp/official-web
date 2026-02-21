@@ -26,7 +26,7 @@ describe("getPreferredStoreByUserAgent", () => {
 });
 
 describe("getSajuApiBaseUrl", () => {
-  it("uses dev api base by default", () => {
-    expect(getSajuApiBaseUrl()).toBe("https://dev-api.nine20.net");
+  it("uses production api base by default", () => {
+    expect(getSajuApiBaseUrl()).toBe("https://api.nine20.net");
   });
 });

@@ -76,3 +76,24 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `src/content/blog/sajuSeries.ts`, `src/content/blog/sajuSeries.test.ts`, `src/app/[lang]/blog/[slug]/page.tsx`, static `docs/*`
 - Verification: `npm test -- src/content/blog/sajuSeries.test.ts` passed, `npm run lint` passed (1 existing warning), `npm run build` passed
 - Follow-up: Consider adding keyboard shortcuts and top-level series index nav for long reading flows
+
+## 2026-02-21
+- Task: Switch free saju default API base to production endpoint
+- Decision: Change default base URL to `https://api.nine20.net` while keeping `NEXT_PUBLIC_API_BASE_URL` override behavior
+- Changed: `docs/plans/2026-02-21-free-saju-api-prod-default.md`, `src/lib/runtimeConfig.ts`, `src/lib/runtimeConfig.test.ts`, `README.md`, `CLAUDE.md`, `.cursorrules`, `MEMORY.md`
+- Verification: `npm install` passed (required for local test runtime), `npm test` passed
+- Follow-up: Set `NEXT_PUBLIC_API_BASE_URL` explicitly in deployment environments that still require non-production backend
+
+## 2026-02-21
+- Task: Regenerate docs static output after API default switch
+- Decision: Rebuild `docs` via Next.js export so shipped static bundle uses `https://api.nine20.net`, and restore non-build docs (`CNAME`, `docs/blog/saju-study-10/*`, `docs/plans/*`) removed by export cleanup
+- Changed: `docs/**`, `docs/CNAME`, `docs/blog/saju-study-10/*`, `docs/plans/2026-02-21-free-saju-api-prod-default.md`, `MEMORY.md`
+- Verification: `npm run build` passed, `npm test` passed, `rg -n "dev-api\\.nine20\\.net" docs -S` returned no matches
+- Follow-up: If deployment relies on `NEXT_PUBLIC_API_BASE_URL`, update that environment variable in hosting settings as well
+
+## 2026-02-21
+- Task: Ignore local npm cache directory in git
+- Decision: Add `/.npm-cache/` to `.gitignore` to prevent local cache artifacts from appearing as untracked files
+- Changed: `.gitignore`, `MEMORY.md`
+- Verification: `git check-ignore -v .npm-cache/.keep` matched `.gitignore`, `npm test` passed
+- Follow-up: None
