@@ -4,10 +4,32 @@ export interface SajuPreviewRequest {
   birth_day: number;
   gender: "M" | "F";
   timezone: string;
+  latitude?: number | null;
+  longitude?: number | null;
   is_lunar?: boolean;
   is_leap_month?: boolean;
   birth_hour?: number | null;
   birth_minute?: number | null;
+}
+
+export interface BirthplacePresetItem {
+  key: string;
+  country_code: string;
+  country_name: string;
+  city_name: string | null;
+  display_name: string;
+  preset_level: "country" | "city" | string;
+  timezone: string;
+  latitude: number;
+  longitude: number;
+  supported_locales: string[];
+  is_recommended: boolean;
+}
+
+export interface BirthplacePresetListResponse {
+  locale: string;
+  supported_languages: string[];
+  presets: BirthplacePresetItem[];
 }
 
 interface PillarValue {
@@ -78,6 +100,48 @@ export async function checkSajuPreviewAvailability(
     return response.ok;
   } catch {
     return false;
+  }
+}
+
+export async function fetchBirthplacePresets(
+  baseUrl: string,
+  language: string
+): Promise<BirthplacePresetListResponse> {
+  let response: Response;
+
+  try {
+    const query = new URLSearchParams({ lang: language }).toString();
+    response = await fetch(buildUrl(baseUrl, `/api/v1/saju/birthplace-presets?${query}`), {
+      method: "GET",
+      cache: "no-store",
+      headers: {
+        "Accept-Language": language,
+      },
+    });
+  } catch {
+    throw new SajuPreviewApiError(
+      "Network error while loading birthplace presets.",
+      undefined,
+      "network"
+    );
+  }
+
+  if (!response.ok) {
+    throw new SajuPreviewApiError(
+      `Failed to load birthplace presets (${response.status}).`,
+      response.status,
+      "http"
+    );
+  }
+
+  try {
+    return (await response.json()) as BirthplacePresetListResponse;
+  } catch {
+    throw new SajuPreviewApiError(
+      "Invalid birthplace presets payload.",
+      response.status,
+      "invalid_response"
+    );
   }
 }
 

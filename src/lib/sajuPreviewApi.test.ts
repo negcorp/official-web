@@ -1,5 +1,6 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
 import {
+  fetchBirthplacePresets,
   SajuPreviewApiError,
   checkSajuPreviewAvailability,
   isSajuPreviewServiceUnavailableError,
@@ -92,6 +93,57 @@ describe("requestSajuPreview", () => {
       status: 503,
       type: "http",
     });
+  });
+});
+
+describe("fetchBirthplacePresets", () => {
+  it("returns parsed presets response on success", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          locale: "en",
+          supported_languages: ["en", "ko"],
+          presets: [
+            {
+              key: "kr",
+              country_code: "KR",
+              country_name: "Korea",
+              city_name: null,
+              display_name: "Korea",
+              preset_level: "country",
+              timezone: "Asia/Seoul",
+              latitude: 36.5,
+              longitude: 127.9,
+              supported_locales: ["ko", "en"],
+              is_recommended: true,
+            },
+          ],
+        }),
+      })
+    );
+
+    const result = await fetchBirthplacePresets(API_BASE, "en");
+    expect(result.presets[0]?.timezone).toBe("Asia/Seoul");
+  });
+
+  it("throws http error when presets endpoint fails", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: false,
+        status: 503,
+      })
+    );
+
+    await expect(fetchBirthplacePresets(API_BASE, "ko")).rejects.toMatchObject(
+      {
+        status: 503,
+        type: "http",
+      } as Partial<SajuPreviewApiError>
+    );
   });
 });
 

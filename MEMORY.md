@@ -111,3 +111,10 @@ Append one entry per completed task. Do not rewrite past entries unless correcti
 - Changed: `docs/**`, `MEMORY.md`
 - Verification: `npm run build` passed, `npm test` passed, `rg -n "openapi\\.json" docs/_next/static/chunks -S` returned no matches
 - Follow-up: Consider moving non-build documents outside `docs/` to avoid restore steps on each export
+
+## 2026-02-21
+- Task: Replace manual timezone input with server-driven birthplace presets
+- Decision: Use `/api/v1/saju/birthplace-presets` for UI selection and submit preset-derived `timezone`, `latitude`, `longitude` to `/api/v1/saju/preview`
+- Changed: `src/components/saju/SajuPreviewClient.tsx`, `src/lib/sajuPreviewApi.ts`, `src/lib/sajuPreviewApi.test.ts`, `README.md`, `CLAUDE.md`, `.cursorrules`, `docs/plans/2026-02-21-saju-preview-root-health-check.md`, `MEMORY.md`
+- Verification: `npm test` passed, `npm run build` passed
+- Follow-up: If backend provides a dedicated `/health` contract for this feature, migrate availability check to that endpoint

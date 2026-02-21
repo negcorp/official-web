@@ -20,6 +20,7 @@
 - Keep Tailwind v4 tokens in `src/app/globals.css`
 - Prefer small patches and explicit file references
 - Free saju API default is `https://api.nine20.net`; keep env override via `NEXT_PUBLIC_API_BASE_URL`
+- For free saju form, use server-driven birthplace presets (`/api/v1/saju/birthplace-presets`) instead of manual timezone text input.
 
 ## Required Verification
 - `npm test`

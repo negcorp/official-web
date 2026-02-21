@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Dictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
 import {
+  type BirthplacePresetItem,
+  fetchBirthplacePresets,
   SajuPreviewApiError,
   checkSajuPreviewAvailability,
   isSajuPreviewServiceUnavailableError,
@@ -18,8 +20,11 @@ type FormState = {
   birthYear: string;
   birthMonth: string;
   birthDay: string;
+  birthplaceKey: string;
   gender: "M" | "F";
   timezone: string;
+  latitude: number | null;
+  longitude: number | null;
   isLunar: boolean;
   isLeapMonth: boolean;
   birthHour: string;
@@ -47,14 +52,20 @@ export default function SajuPreviewClient({
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState<string>("");
   const [result, setResult] = useState<SajuPreviewResponse | null>(null);
+  const [birthplacePresets, setBirthplacePresets] = useState<
+    BirthplacePresetItem[]
+  >([]);
   const [retryCountdown, setRetryCountdown] = useState(30);
   const [form, setForm] = useState<FormState>(() => ({
     birthYear: "",
     birthMonth: "",
     birthDay: "",
+    birthplaceKey: "",
     gender: "M",
     timezone:
       Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Seoul",
+    latitude: null,
+    longitude: null,
     isLunar: false,
     isLeapMonth: false,
     birthHour: "",
@@ -63,9 +74,48 @@ export default function SajuPreviewClient({
 
   const refreshAvailability = useCallback(async () => {
     setStatus("checking");
-    const available = await checkSajuPreviewAvailability(getSajuApiBaseUrl());
-    setStatus(available ? "available" : "unavailable");
-  }, []);
+    const baseUrl = getSajuApiBaseUrl();
+    const available = await checkSajuPreviewAvailability(baseUrl);
+    if (!available) {
+      setStatus("unavailable");
+      return;
+    }
+
+    try {
+      const presetResponse = await fetchBirthplacePresets(baseUrl, lang);
+      const presets = presetResponse.presets ?? [];
+      if (presets.length === 0) {
+        setStatus("unavailable");
+        setBirthplacePresets([]);
+        return;
+      }
+
+      setBirthplacePresets(presets);
+      setForm((prev) => {
+        const matchedPreset =
+          presets.find((preset) => preset.key === prev.birthplaceKey) ??
+          presets.find((preset) => preset.timezone === prev.timezone) ??
+          presets.find((preset) => preset.is_recommended) ??
+          presets[0];
+
+        if (!matchedPreset) {
+          return prev;
+        }
+
+        return {
+          ...prev,
+          birthplaceKey: matchedPreset.key,
+          timezone: matchedPreset.timezone,
+          latitude: matchedPreset.latitude,
+          longitude: matchedPreset.longitude,
+        };
+      });
+      setStatus("available");
+    } catch {
+      setBirthplacePresets([]);
+      setStatus("unavailable");
+    }
+  }, [lang]);
 
   useEffect(() => {
     void refreshAvailability();
@@ -110,6 +160,7 @@ export default function SajuPreviewClient({
       !form.birthYear ||
       !form.birthMonth ||
       !form.birthDay ||
+      !form.birthplaceKey ||
       !form.gender ||
       !form.timezone
     ) {
@@ -129,6 +180,8 @@ export default function SajuPreviewClient({
           birth_day: Number(form.birthDay),
           gender: form.gender,
           timezone: form.timezone,
+          latitude: form.latitude,
+          longitude: form.longitude,
           is_lunar: form.isLunar,
           is_leap_month: form.isLeapMonth,
           birth_hour: form.birthHour ? Number(form.birthHour) : null,
@@ -256,25 +309,36 @@ export default function SajuPreviewClient({
 
         <label className="mt-4 block text-sm text-text-secondary">
           {dict.sajuPreview.form.timezone}
-          <input
-            value={form.timezone}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, timezone: e.target.value }))
-            }
+          <select
+            value={form.birthplaceKey}
+            onChange={(e) => {
+              const selectedPreset = birthplacePresets.find(
+                (preset) => preset.key === e.target.value
+              );
+              if (!selectedPreset) {
+                return;
+              }
+
+              setForm((prev) => ({
+                ...prev,
+                birthplaceKey: selectedPreset.key,
+                timezone: selectedPreset.timezone,
+                latitude: selectedPreset.latitude,
+                longitude: selectedPreset.longitude,
+              }));
+            }}
             required
-            list="timezone-options"
             className="mt-1 w-full rounded-lg border border-border bg-black/20 px-3 py-2 text-text-primary outline-none focus:border-neon-purple"
-          />
-          <datalist id="timezone-options">
-            <option value="Asia/Seoul" />
-            <option value="Asia/Tokyo" />
-            <option value="America/Los_Angeles" />
-            <option value="America/New_York" />
-            <option value="Europe/London" />
-          </datalist>
-          <span className="mt-1 block text-xs text-text-muted">
-            {dict.sajuPreview.form.hint}
-          </span>
+          >
+            <option value="" disabled>
+              {dict.sajuPreview.form.timezone}
+            </option>
+            {birthplacePresets.map((preset) => (
+              <option key={preset.key} value={preset.key}>
+                {preset.display_name} ({preset.timezone})
+              </option>
+            ))}
+          </select>
         </label>
 
         <div className="mt-4 grid grid-cols-2 gap-4">
